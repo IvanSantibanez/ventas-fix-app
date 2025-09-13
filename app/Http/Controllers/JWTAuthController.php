@@ -42,7 +42,7 @@ class JWTAuthController extends Controller
         }
 
         $request->session()->regenerate();
-        // TODO: redirigir al inicio de la página
+        return redirect('/login');
     }
 
     public function login(Request $request)
@@ -53,11 +53,10 @@ class JWTAuthController extends Controller
                 return response()->json([
                     'success' => false,
                     'data' => null,
-                    'message' => 'Credenciales inválidas'
+                    'message' => 'Credenciales inválidas.'
                 ], JsonResponse::HTTP_UNAUTHORIZED);
             }
-            // TODO: redirigir al login con mensaje de error
-
+            return redirect('/login')->with('status', 'Credenciales inválidas.');
         }
 
         if ($request->expectsJson()) {
@@ -69,7 +68,7 @@ class JWTAuthController extends Controller
         }
 
         $request->session()->regenerate();
-        // TODO: redirigir al inicio de la página
+        return redirect()->intended('/dashboard')->with('success', 'Inicio de sesión exitoso.')->withCookie(cookie('token', $token, 180));
     }
 
     public function perfil()
