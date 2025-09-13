@@ -56,7 +56,7 @@ class JWTAuthController extends Controller
                     'message' => 'Credenciales inválidas.'
                 ], JsonResponse::HTTP_UNAUTHORIZED);
             }
-            return redirect('/login')->with('message', 'Credenciales inválidas.');
+            return back()->withErrors(['message' => 'Credenciales inválidas.']);
         }
 
         if ($request->expectsJson()) {
