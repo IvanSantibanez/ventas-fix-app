@@ -180,30 +180,6 @@
                 <li class="menu-header small">
                     <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
                 </li>
-                <li class="menu-item">
-                    <a href="app-email.html" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-mail"></i>
-                        <div data-i18n="Email">Email</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-chat.html" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-messages"></i>
-                        <div data-i18n="Chat">Chat</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-calendar.html" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-calendar"></i>
-                        <div data-i18n="Calendar">Calendar</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="app-kanban.html" class="menu-link">
-                        <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
-                        <div data-i18n="Kanban">Kanban</div>
-                    </a>
-                </li>
                 <!-- e-commerce-app menu start -->
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -273,53 +249,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="menu-item">
-                            <a href="app-ecommerce-manage-reviews.html" class="menu-link">
-                                <div data-i18n="Manage Reviews">Manage Reviews</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="app-ecommerce-referral.html" class="menu-link">
-                                <div data-i18n="Referrals">Referrals</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                <div data-i18n="Settings">Settings</div>
-                            </a>
-                            <ul class="menu-sub">
-                                <li class="menu-item">
-                                    <a href="app-ecommerce-settings-detail.html" class="menu-link">
-                                        <div data-i18n="Store Details">Store Details</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="app-ecommerce-settings-payments.html" class="menu-link">
-                                        <div data-i18n="Payments">Payments</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="app-ecommerce-settings-checkout.html" class="menu-link">
-                                        <div data-i18n="Checkout">Checkout</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="app-ecommerce-settings-shipping.html" class="menu-link">
-                                        <div data-i18n="Shipping & Delivery">Shipping & Delivery</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="app-ecommerce-settings-locations.html" class="menu-link">
-                                        <div data-i18n="Locations">Locations</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="app-ecommerce-settings-notifications.html" class="menu-link">
-                                        <div data-i18n="Notifications">Notifications</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </li>
                 <!-- e-commerce-app menu end -->
