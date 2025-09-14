@@ -13,7 +13,7 @@ class ProductoSeeder extends Seeder
     public function run(): void
     {
         Producto::create([
-            'sku' => 'PROD-001',
+            'sku' => '3523322',
             'nombre' => 'Celular Samsung S24 FE',
             'descripcion_corta' => 'Celular Samsung S24 FE de última generación.',
             'descripcion_larga' => 'El Samsung S24 FE ofrece un rendimiento excepcional, una cámara de alta calidad y una pantalla vibrante para una experiencia móvil inigualable.',
@@ -27,7 +27,7 @@ class ProductoSeeder extends Seeder
         ]);
 
         Producto::create([
-            'sku' => 'PROD-002',
+            'sku' => '53253232',
             'nombre' => 'nombre de prueba',
             'descripcion_corta' => 'descripción corta de prueba',
             'descripcion_larga' => 'descripción larga wqfqt3r1 geegw ge g w gw g  g g r h 5r h',
