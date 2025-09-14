@@ -821,12 +821,8 @@
                                         <th>Sku</th>
                                         <th>Nombre</th>
                                         <th>Descripción</th>
-                                        <th>Precio Neto</th>
                                         <th>Precio Venta</th>
                                         <th>Stock Actual</th>
-                                        <th>Stock Mínimo</th>
-                                        <th>Stock Bajo</th>
-                                        <th>Stock Alto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -835,19 +831,17 @@
                                         <td><img src="{{ $producto['imagen_url'] }}"
                                                 alt="{{ $producto['nombre'] }}"
                                                 class="img-thumbnail"
-                                                loading="lazy"></td>
+                                                style="width:150px;height:150px;object-fit:cover"
+                                            loading="lazy"></td>
                                         <td>{{ $producto['sku'] }}</td>
                                         <td class="fw-semibold">
                                             {{ $producto['nombre'] }}<br>
                                             <span class=" small opacity-75">{{ $producto['descripcion_corta'] }}</span>
                                         </td>
                                         <td>{{ $producto['descripcion_larga'] }}</td>
-                                        <td>${{ $producto['precio_neto'] }}</td>
                                         <td>${{ $producto['precio_venta'] }}</td>
                                         <td>{{ $producto['stock_actual'] }}</td>
-                                        <td>{{ $producto['stock_minimo'] }}</td>
-                                        <td>{{ $producto['stock_bajo'] }}</td>
-                                        <td>{{ $producto['stock_alto'] }}</td>
+
                                     </tr>
                                     @endforeach
                                 </tbody>
