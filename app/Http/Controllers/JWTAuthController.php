@@ -73,7 +73,11 @@ class JWTAuthController extends Controller
 
     public function perfil()
     {
-        return response()->json(auth()->user());
+        return response()->json([
+            'success' => true,
+            'data' => auth()->user(),
+            'message' => 'Perfil del usuario obtenido exitosamente.'
+        ], JsonResponse::HTTP_OK);
     }
 
     public function logout(Request $request)
@@ -84,5 +88,168 @@ class JWTAuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('message', 'Has cerrado sesión.');
+    }
+
+    public function deleteUser(string $id)
+    {
+        if ((int)$id <= 0) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'El ID es inválido.'
+            ], JsonResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $usuario = Usuario::find($id);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Error al obtener el usuario.'
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        if (!$usuario) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Usuario no encontrado.'
+            ], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        try {
+            $usuario->delete();
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Error al eliminar el usuario.'
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => null,
+            'message' => 'Usuario eliminado correctamente.'
+        ], JsonResponse::HTTP_OK);
+    }
+
+    public function getAllUsers()
+    {
+        try {
+            $usuarios = Usuario::all();
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Error al obtener los usuarios.'
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $usuarios,
+            'message' => 'Usuarios obtenidos exitosamente.'
+        ], JsonResponse::HTTP_OK);
+    }
+
+    public function getUserById(string $id)
+    {
+        if ((int)$id <= 0) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'El ID es inválido.'
+            ], JsonResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $usuario = Usuario::find($id);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Error al obtener el usuario.'
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        if (!$usuario) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Usuario no encontrado.'
+            ], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $usuario,
+            'message' => 'Usuario obtenido exitosamente.'
+        ], JsonResponse::HTTP_OK);
+    }
+
+    public function updateUser(Request $request, string $id)
+    {
+        if ((int)$id <= 0) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'El ID es inválido.'
+            ], JsonResponse::HTTP_BAD_REQUEST);
+        }
+
+        try {
+            $usuario = Usuario::find($id);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Error al obtener el usuario.'
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        if (!$usuario) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Usuario no encontrado.'
+            ], JsonResponse::HTTP_NOT_FOUND);
+        }
+
+        $request->validate([
+            'rut' => 'required|string|max:10',
+            'nombre' => 'required|string|max:100',
+            'apellido' => 'required|string|max:100',
+            'password' => 'required|min:6'
+        ]);
+
+        if (isset($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        $email = $request->nombre . "." . $request->apellido . "@ventasfix.cl";
+
+        try {
+            $usuario = Usuario::update([
+                'rut' => $request->rut,
+                'nombre' => $request->nombre,
+                'apellido' => $request->apellido,
+                'email' => $email,
+                'password' => bcrypt($request->password)
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'success' => false,
+                'data' => null,
+                'message' => 'Error al actualizar el usuario.'
+            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $usuario,
+            'message' => 'Usuario actualizado correctamente.'
+        ], JsonResponse::HTTP_OK);
     }
 }
