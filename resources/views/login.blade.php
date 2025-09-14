@@ -62,6 +62,16 @@
                 <h4 class="mb-1">Bienvenido a VentasFix! 👋</h4>
                 <p class="mb-6">Por favor, inicie sesión en su cuenta y comience la aventura</p>
 
+                @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 <form id="formAuthentication" class="mb-6" action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="mb-6">

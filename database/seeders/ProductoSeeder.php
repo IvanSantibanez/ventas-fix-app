@@ -25,5 +25,19 @@ class ProductoSeeder extends Seeder
             'stock_bajo' => 10,
             'stock_alto' => 100,
         ]);
+
+        Producto::create([
+            'sku' => 'PROD-002',
+            'nombre' => 'nombre de prueba',
+            'descripcion_corta' => 'descripción corta de prueba',
+            'descripcion_larga' => 'descripción larga wqfqt3r1 geegw ge g w gw g  g g r h 5r h',
+            'imagen_url' => 'https://http2.mlstatic.com/D_NQ_NP_2X_661052-MLA49766829295_042022-F.webp',
+            'precio_neto' => 999000,
+            'precio_venta' => 1299000,
+            'stock_actual' => 30,
+            'stock_minimo' => 5,
+            'stock_bajo' => 5,
+            'stock_alto' => 50,
+        ]);
     }
 }

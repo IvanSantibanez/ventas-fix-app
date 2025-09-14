@@ -36,8 +36,9 @@
 
     <!-- Core CSS -->
 
-    <link rel="stylesheet" href="{{ asset('vendor/css/rtl/core.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/css/rtl/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('vendor/css/rtl/theme-default.css') }}" />
+
 
     <link rel="stylesheet" href="{{ asset('css/demo.css') }}" />
 
@@ -46,6 +47,13 @@
 
     <link rel="stylesheet" href="{{ asset('vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/typeahead-js/typeahead.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/quill/typography.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/quill/katex.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/quill/editor.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/select2/select2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/dropzone/dropzone.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/flatpickr/flatpickr.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/tagify/tagify.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/apex-charts/apex-charts.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/swiper/swiper.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
@@ -60,6 +68,9 @@
     <!-- Helpers -->
     <script src="{{ asset('vendor/js/helpers.js') }}"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+
+    <!-- ? Template customizer: To hide customizer set displayCustomizer value false in config.js. -->
+    <script src="{{ asset('vendor/js/template-customizer.js') }}"></script>
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('js/config.js') }}"></script>
@@ -85,12 +96,23 @@
     <script src="{{ asset('vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('vendor/libs/swiper/swiper.js') }}"></script>
     <script src="{{ asset('vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
+    <script src="{{ asset('vendor/libs/quill/katex.js') }}"></script>
+    <script src="{{ asset('vendor/libs/quill/quill.js') }}"></script>
+    <script src="{{ asset('vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('vendor/libs/dropzone/dropzone.js') }}"></script>
+    <script src="{{ asset('vendor/libs/jquery-repeater/jquery-repeater.js') }}"></script>
+    <script src="{{ asset('vendor/libs/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('vendor/libs/tagify/tagify.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('js/main.js') }}"></script>
 
     <!-- Page JS -->
     <script src="{{ asset('js/dashboards-analytics.js') }}"></script>
+    <script src="{{ asset('js/app-ecommerce-dashboard.js') }}"></script>
+    <script src="{{ asset('js/app-ecommerce-product-list.js') }}"></script>
+    <script src="{{ asset('js/app-ecommerce-product-add.js') }}"></script>
+
 </body>
 
 </html>

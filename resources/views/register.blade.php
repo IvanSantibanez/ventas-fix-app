@@ -59,8 +59,18 @@
         <!-- Register -->
         <div class="d-flex col-12 col-lg-4 align-items-center authentication-bg p-sm-12 p-6">
             <div class="w-px-400 mx-auto mt-12 pt-5">
-                <h4 class="mb-1">Adventure starts here 🚀</h4>
-                <p class="mb-6">Make your app management easy and fun!</p>
+                <h4 class="mb-1">Registrate 🚀</h4>
+                <p class="mb-6">Haz que la gestión de tu aplicación sea fácil y divertida!</p>
+
+                @if ($errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
 
                 <form id="formAuthentication" class="mb-6" action="{{ route('register') }}" method="POST">
                     @csrf
@@ -86,7 +96,7 @@
                             placeholder="Ingrese su nombre"
                             autofocus />
                     </div>
-                     <div class="mb-6">
+                    <div class="mb-6">
                         <label for="apellido" class="form-label">Apellido</label>
                         <input
                             type="text"
