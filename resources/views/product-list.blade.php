@@ -803,10 +803,9 @@
                         </div>
                     </div>
 
-                    <!-- Product List Table -->
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Filter</h5>
+                            <h5 class="card-title">Lista de productos</h5>
                             <div class="d-flex justify-content-between align-items-center row pt-4 gap-6 gap-md-0">
                                 <div class="col-md-4 product_status"></div>
                                 <div class="col-md-4 product_category"></div>
@@ -819,7 +818,7 @@
                                     <tr>
                                         <th></th>
                                         <th>Sku</th>
-                                        <th>Nombre</th>
+                                        <th>Producto</th>
                                         <th>Descripción</th>
                                         <th>Precio Venta</th>
                                         <th>Stock Actual</th>
@@ -828,17 +827,29 @@
                                 <tbody>
                                     @foreach ($productos as $producto)
                                     <tr>
-                                        <td><img src="{{ $producto['imagen_url'] }}"
-                                                alt="{{ $producto['nombre'] }}"
-                                                class="img-thumbnail"
-                                                style="width:150px;height:150px;object-fit:cover"
-                                            loading="lazy"></td>
+                                        <td>
+                                            <button type="button"
+                                                class="btn rounded-circle"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modal-{{ $producto->id }}">
+                                                <i class="fa-solid fa-circle-plus" style="color:#7367F0; font-size:24px;"></i>
+                                            </button>
+                                        </td>
+
                                         <td>{{ $producto['sku'] }}</td>
                                         <td class="fw-semibold">
-                                            {{ $producto['nombre'] }}<br>
-                                            <span class=" small opacity-75">{{ $producto['descripcion_corta'] }}</span>
+                                            <div class="d-flex align-items-center justify-content-start">
+                                                <div class="avatar-wrapper">
+                                                    <div class="avatar bg-label-secondary me-4 rounded-2">
+                                                        <img src="{{ $producto['imagen_url'] }}" alt="{{ $producto['nombre'] }}" class="rounded-2">
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-column">
+                                                    <h6 class="text-nowrap mb-0">{{ $producto['nombre'] }}</h6>
+                                                </div>
+                                            </div>
                                         </td>
-                                        <td>{{ $producto['descripcion_larga'] }}</td>
+                                        <td>{{ $producto['descripcion_corta'] }}</td>
                                         <td>${{ $producto['precio_venta'] }}</td>
                                         <td>{{ $producto['stock_actual'] }}</td>
 
@@ -892,5 +903,113 @@
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
 </div>
+
+@foreach ($productos as $producto)
+<div class="modal fade dtr-bs-modal" id="modal-{{ $producto->id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Detalles de {{ $producto->nombre }}</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table">
+                    <tbody>
+
+                        <tr>
+                            <td class="text-capitalize">producto:</td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-start">
+                                    <div class="avatar-wrapper">
+                                        <div class="avatar bg-label-secondary me-4 rounded-2">
+                                            <img src="{{ $producto['imagen_url'] }}" alt="{{ $producto['nombre'] }}" class="rounded-2">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h6 class="text-nowrap mb-0">{{ $producto['nombre'] }}</h6>
+                                        <small class="d-none d-sm-block text-truncate">{{ $producto['descripcion_corta'] }}</small>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize">sku:</td>
+                            <td>
+                                <div>{{ $producto['sku'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize">descripción:</td>
+                            <td>
+                                <div>{{ $producto['descripcion_larga'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize text-nowrap">precio neto:</td>
+                            <td>
+                                <div>{{ $producto['precio_neto'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize text-nowrap">precio venta:</td>
+                            <td>
+                                <div>{{ $producto['precio_venta'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize text-nowrap">stock actual:</td>
+                            <td>
+                                <div>{{ $producto['stock_actual'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize text-nowrap">stock mínimo:</td>
+                            <td>
+                                <div>{{ $producto['stock_minimo'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize text-nowrap">stock bajo:</td>
+                            <td>
+                                <div>{{ $producto['stock_bajo'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize text-nowrap">stock alto:</td>
+                            <td>
+                                <div>{{ $producto['stock_alto'] }}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-capitalize">Acciones:</td>
+                            <td>
+                                <a href="javascript:;" class="btn btn-primary waves-effect waves-light">Editar</a>
+                                <form action="{{ route('productos.destroy', $producto['id']) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-label-danger delete-customer waves-effect">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
 
 @endsection

@@ -37,13 +37,6 @@ class ProductoController extends Controller
         ], JsonResponse::HTTP_OK);
     }
 
-    public function indexWeb()
-    {
-
-        $productos = Producto::all();
-        return view('product-list', compact('productos'));
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -241,4 +234,21 @@ class ProductoController extends Controller
         ], JsonResponse::HTTP_OK);
     }
 
+
+    public function indexWeb()
+    {
+
+        $productos = Producto::all();
+        return view('product-list', compact('productos'));
+    }
+
+    public function destroyWeb(string $id)
+    {
+        $producto = Producto::find($id);
+        if ($producto) {
+            $producto->delete();
+        }
+
+        return redirect()->route('productos.index');
+    }
 }
