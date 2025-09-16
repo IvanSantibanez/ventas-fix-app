@@ -39,6 +39,7 @@ class JwtMiddleware
         if ($request->is('api/*')) {
             return response()->json([
                 'success' => false,
+                'data' => null,
                 'error' => $message
             ], JsonResponse::HTTP_UNAUTHORIZED);
         }
