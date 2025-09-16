@@ -36,7 +36,7 @@ class JwtMiddleware
 
     private function unauthorizedResponse(Request $request, string $message)
     {
-        if ($request->expectsJson()) {
+        if ($request->is('api/*')) {
             return response()->json([
                 'success' => false,
                 'error' => $message
