@@ -12,7 +12,7 @@ Route::post('/login', [JWTAuthController::class, 'login']);
 Route::post('/register', [JWTAuthController::class, 'register']);
 
 
-Route::middleware([JwtMiddleware::class])->group(function () {
+Route::middleware('auth.jwt')->group(function () {
 
     Route::get('/perfil', [JWTAuthController::class, 'perfil']);
     Route::get('/usuarios/{id}', [JWTAuthController::class, 'getUserById']);
