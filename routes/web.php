@@ -25,9 +25,7 @@ Route::get('/logout', [JWTAuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth.jwt')->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [ProductoController::class, 'dashboardCounts'])->name('dashboard');
 
     Route::get('/product-list', function () {
         return view('product-list');
@@ -49,4 +47,9 @@ Route::middleware('auth.jwt')->group(function () {
     Route::put('/clientes/{id}/editar', [ClienteController::class, 'updateWeb'])->name('clientes.update');
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroyWeb'])->name('clientes.destroy');
     Route::post('/clientes', [ClienteController::class, 'storeWeb'])->name('clientes.store');
+
+    Route::get('/usuarios', [JWTAuthController::class, 'indexWeb'])->name('usuarios.index');
+    Route::get('/usuarios/{id}', [JWTAuthController::class, 'showWeb'])->name('usuarios.show');
+    Route::put('/usuarios/{id}', [JWTAuthController::class, 'updateWeb'])->name('usuarios.update');
+    Route::delete('/usuarios/{id}', [JWTAuthController::class, 'destroyWeb'])->name('usuarios.destroy');
 });

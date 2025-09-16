@@ -227,14 +227,14 @@
                 </li>
                 <!-- e-commerce-app menu end -->
                 <!-- Academy menu start -->
-                <li class="menu-item">
+                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons ti ti-users"></i>
                         <div data-i18n="Usuarios">Usuarios</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="app-user-list.html" class="menu-link">
+                            <a href="{{ route('usuarios.index') }}" class="menu-link">
                                 <div data-i18n="Lista">Lista</div>
                             </a>
                         </li>
@@ -763,7 +763,7 @@
                                                     </div>
                                                     <div class="card-info">
                                                         <h5 class="mb-0">230k</h5>
-                                                        <small>Sales</small>
+                                                        <small>Ventas</small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -771,8 +771,8 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="badge rounded bg-label-info me-4 p-2"><i class="ti ti-users ti-lg"></i></div>
                                                     <div class="card-info">
-                                                        <h5 class="mb-0">8.549k</h5>
-                                                        <small>Customers</small>
+                                                        <h5 class="mb-0">{{ $clientes }}</h5>
+                                                        <small>Clientes</small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -782,19 +782,19 @@
                                                         <i class="ti ti-shopping-cart ti-lg"></i>
                                                     </div>
                                                     <div class="card-info">
-                                                        <h5 class="mb-0">1.423k</h5>
-                                                        <small>Products</small>
+                                                        <h5 class="mb-0">{{ $productos }}</h5>
+                                                        <small>Productos</small>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-6">
                                                 <div class="d-flex align-items-center">
                                                     <div class="badge rounded bg-label-success me-4 p-2">
-                                                        <i class="ti ti-currency-dollar ti-lg"></i>
+                                                        <i class="ti ti-user ti-lg"></i>
                                                     </div>
                                                     <div class="card-info">
-                                                        <h5 class="mb-0">$9745</h5>
-                                                        <small>Revenue</small>
+                                                        <h5 class="mb-0">{{ $usuarios }}</h5>
+                                                        <small>Usuarios</small>
                                                     </div>
                                                 </div>
                                             </div>

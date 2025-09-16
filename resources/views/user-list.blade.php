@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Producto - VentasFix')
+@section('title', 'Usuarios - VentasFix')
 
 @section('content')
 
@@ -176,41 +176,6 @@
                     </ul>
                 </li>
 
-                <!-- Front Pages -->
-                <li class="menu-item">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons ti ti-files"></i>
-                        <div data-i18n="Front Pages">Front Pages</div>
-                    </a>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a href="../front-pages/landing-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Landing">Landing</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/pricing-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Pricing">Pricing</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/payment-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Payment">Payment</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/checkout-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Checkout">Checkout</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/help-center-landing.html" class="menu-link" target="_blank">
-                                <div data-i18n="Help Center">Help Center</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
                 <!-- Apps & Pages -->
                 <li class="menu-header small">
                     <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
@@ -262,7 +227,7 @@
                 </li>
                 <!-- e-commerce-app menu end -->
                 <!-- Academy menu start -->
-                 <li class="menu-item">
+                <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons ti ti-users"></i>
                         <div data-i18n="Usuarios">Usuarios</div>
@@ -337,6 +302,34 @@
                             </ul>
                         </li>
                         <!--/ Language -->
+
+                        <!-- Style Switcher -->
+                        <li class="nav-item dropdown-style-switcher dropdown">
+                            <a
+                                class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow"
+                                href="javascript:void(0);"
+                                data-bs-toggle="dropdown">
+                                <i class="ti ti-md"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                                        <span class="align-middle"><i class="ti ti-sun ti-md me-3"></i>Light</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                                        <span class="align-middle"><i class="ti ti-moon-stars ti-md me-3"></i>Dark</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                                        <span class="align-middle"><i class="ti ti-device-desktop-analytics ti-md me-3"></i>System</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- / Style Switcher-->
 
                         <!-- Quick links  -->
                         <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown">
@@ -464,7 +457,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar">
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle" />
+                                                        <img src="{{ asset('img/avatars/1.png') }}" alt class="rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -727,204 +720,193 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="app-ecommerce">
+                    <div class="row g-6 mb-6">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start justify-content-between">
+                                        <div class="content-left">
+                                            <span class="text-heading">Session</span>
+                                            <div class="d-flex align-items-center my-1">
+                                                <h4 class="mb-0 me-2">21,459</h4>
+                                                <p class="text-success mb-0">(+29%)</p>
+                                            </div>
+                                            <small class="mb-0">Total Users</small>
+                                        </div>
+                                        <div class="avatar">
+                                            <span class="avatar-initial rounded bg-label-primary">
+                                                <i class="ti ti-users ti-26px"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start justify-content-between">
+                                        <div class="content-left">
+                                            <span class="text-heading">Paid Users</span>
+                                            <div class="d-flex align-items-center my-1">
+                                                <h4 class="mb-0 me-2">4,567</h4>
+                                                <p class="text-success mb-0">(+18%)</p>
+                                            </div>
+                                            <small class="mb-0">Last week analytics </small>
+                                        </div>
+                                        <div class="avatar">
+                                            <span class="avatar-initial rounded bg-label-danger">
+                                                <i class="ti ti-user-plus ti-26px"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start justify-content-between">
+                                        <div class="content-left">
+                                            <span class="text-heading">Active Users</span>
+                                            <div class="d-flex align-items-center my-1">
+                                                <h4 class="mb-0 me-2">19,860</h4>
+                                                <p class="text-danger mb-0">(-14%)</p>
+                                            </div>
+                                            <small class="mb-0">Last week analytics</small>
+                                        </div>
+                                        <div class="avatar">
+                                            <span class="avatar-initial rounded bg-label-success">
+                                                <i class="ti ti-user-check ti-26px"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-start justify-content-between">
+                                        <div class="content-left">
+                                            <span class="text-heading">Pending Users</span>
+                                            <div class="d-flex align-items-center my-1">
+                                                <h4 class="mb-0 me-2">237</h4>
+                                                <p class="text-success mb-0">(+42%)</p>
+                                            </div>
+                                            <small class="mb-0">Last week analytics</small>
+                                        </div>
+                                        <div class="avatar">
+                                            <span class="avatar-initial rounded bg-label-warning">
+                                                <i class="ti ti-user-search ti-26px"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Users List Table -->
+                    <div class="card">
+                        <div class="card-header border-bottom">
+                            <h5 class="card-title mb-0">Lista de Usuarios</h5>
+                            <div class="d-flex justify-content-between align-items-center row pt-4 gap-4 gap-md-0">
+                                <div class="col-md-4 user_role"></div>
+                                <div class="col-md-4 user_plan"></div>
+                                <div class="col-md-4 user_status"></div>
+                            </div>
+                        </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <div class="card-datatable table-responsive">
+                            <table class="table">
+                                <thead class="border-top">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Email</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($usuarios as $usuario)
+                                    <tr>
+                                        <td>{{ $usuario['id'] }}</td>
+                                        <td>{{ $usuario['nombre'] }} {{ $usuario['apellido']}}</td>
+                                        <td>{{ $usuario['email'] }}</td>
 
-                        <!-- Add Product -->
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <form action="{{ route('usuarios.destroy', $usuario['id']) }}" method="POST" class="me-2">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill">
+                                                        <i class="ti ti-trash ti-md"></i>
+                                                    </button>
+                                                </form>
+                                                <a href="{{ route('usuarios.show', $usuario['id']) }}" class="btn btn-icon btn-text-secondary waves-effect waves-light rounded-pill">
+                                                    <i class="ti ti-eye ti-md"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / Content -->
+
+                <!-- Footer -->
+                <footer class="content-footer footer bg-footer-theme">
+                    <div class="container-xxl">
                         <div
-                            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h4 class="mb-1">Editar un Producto</h4>
+                            class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                            <div class="text-body">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link">Pixinvent</a>
                             </div>
-                            <button form="formProduct" type="submit" class="btn btn-primary">Actualizar producto</button>
+                            <div class="d-none d-lg-inline-block">
+                                <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
+                                <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
+
+                                <a
+                                    href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
+                                    target="_blank"
+                                    class="footer-link me-4">Documentation</a>
+
+                                <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+                            </div>
                         </div>
                     </div>
+                </footer>
+                <!-- / Footer -->
 
-                    @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-
-                    <form id="formProduct" class="row" method="POST" action="{{ route('productos.update', $producto['id']) }}">
-                        @csrf
-                        @method('PUT')
-                        <!-- First column-->
-                        <div class="col-12 col-lg-8">
-                            <!-- Product Information -->
-                            <div class="card mb-6">
-                                <div class="card-header">
-                                    <h5 class="card-tile mb-0">Información del Producto</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-name">Nombre</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="ecommerce-product-name"
-                                            placeholder="Nombre del producto"
-                                            name="nombre"
-                                            aria-label="Nombre del producto"
-                                            value="{{ old('nombre', $producto['nombre']) }}" />
-                                    </div>
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-name">Descripción corta</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="ecommerce-product-name"
-                                            placeholder="Descripción corta del producto"
-                                            name="descripcion_corta"
-                                            aria-label="Descripción corta del producto"
-                                            value="{{ old('descripcion_corta', $producto['descripcion_corta']) }}"
-                                            maxlength="150" />
-                                    </div>
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-name">URL de la imagen</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="ecommerce-product-name"
-                                            placeholder="URL de la imagen del producto"
-                                            name="imagen_url"
-                                            aria-label="URL de la imagen del producto"
-                                            value="{{ old('imagen_url', $producto['imagen_url']) }}" />
-                                    </div>
-                                    <!-- Description -->
-                                    <div>
-                                        <label class="mb-1" for="descripcion_larga">Descripción</label>
-                                        <textarea class="form-control p-0" name="descripcion_larga" style="resize:none; min-height:7rem">{{ old('descripcion_larga', $producto['descripcion_larga'])}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Product Information -->
-                        </div>
-                        <!-- /Second column -->
-
-                        <!-- Second column -->
-                        <div class="col-12 col-lg-4">
-                            <!-- Pricing Card -->
-                            <div class="card mb-6">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">Contabilidad</h5>
-                                </div>
-                                <div class="card-body">
-                                    <!-- Base Price -->
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-price">Precio neto</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-price"
-                                            placeholder="Precio neto del producto"
-                                            name="precio_neto"
-                                            aria-label="Precio neto del producto"
-                                            value="{{ old('precio_neto', $producto['precio_neto']) }}" />
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock actual</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock actual del producto"
-                                            name="stock_actual"
-                                            aria-label="Stock actual del producto"
-                                            value="{{ old('stock_actual', $producto['stock_actual']) }}"/>
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock mínimo</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock mínimo del producto"
-                                            name="stock_minimo"
-                                            aria-label="Stock mínimo del producto"
-                                            value="{{ old('stock_minimo', $producto['stock_minimo']) }}"/>
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock bajo</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock bajo del producto"
-                                            name="stock_bajo"
-                                            aria-label="Stock bajo del producto"
-                                            value="{{ old('stock_bajo', $producto['stock_bajo']) }}"/>
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock alto</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock alto del producto"
-                                            name="stock_alto"
-                                            aria-label="Stock alto del producto"
-                                            value="{{ old('stock_alto', $producto['stock_alto']) }}"/>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- /Pricing Card -->
-
-                        </div>
-                        <!-- /Second column -->
-                    </form>
-                </div>
+                <div class="content-backdrop fade"></div>
             </div>
-            <!-- / Content -->
-
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-                <div class="container-xxl">
-                    <div
-                        class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-                        <div class="text-body">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link">Pixinvent</a>
-                        </div>
-                        <div class="d-none d-lg-inline-block">
-                            <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
-                            <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
-
-                            <a
-                                href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
-                                target="_blank"
-                                class="footer-link me-4">Documentation</a>
-
-                            <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- / Footer -->
-
-            <div class="content-backdrop fade"></div>
+            <!-- Content wrapper -->
         </div>
-        <!-- Content wrapper -->
+        <!-- / Layout page -->
     </div>
-    <!-- / Layout page -->
-</div>
 
-<!-- Overlay -->
-<div class="layout-overlay layout-menu-toggle"></div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
 
-<!-- Drag Target Area To SlideIn Menu On Small Screens -->
-<div class="drag-target"></div>
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
 </div>
 
 @endsection

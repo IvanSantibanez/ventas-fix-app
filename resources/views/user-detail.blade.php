@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar Producto - VentasFix')
+@section('title', 'Detalles del Usuario - VentasFix')
 
 @section('content')
 
@@ -176,42 +176,7 @@
                     </ul>
                 </li>
 
-                <!-- Front Pages -->
-                <li class="menu-item">
-                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons ti ti-files"></i>
-                        <div data-i18n="Front Pages">Front Pages</div>
-                    </a>
-                    <ul class="menu-sub">
-                        <li class="menu-item">
-                            <a href="../front-pages/landing-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Landing">Landing</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/pricing-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Pricing">Pricing</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/payment-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Payment">Payment</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/checkout-page.html" class="menu-link" target="_blank">
-                                <div data-i18n="Checkout">Checkout</div>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="../front-pages/help-center-landing.html" class="menu-link" target="_blank">
-                                <div data-i18n="Help Center">Help Center</div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- Apps & Pages -->
+             <!-- Apps & Pages -->
                 <li class="menu-header small">
                     <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
                 </li>
@@ -337,6 +302,34 @@
                             </ul>
                         </li>
                         <!--/ Language -->
+
+                        <!-- Style Switcher -->
+                        <li class="nav-item dropdown-style-switcher dropdown">
+                            <a
+                                class="nav-link btn btn-text-secondary btn-icon rounded-pill dropdown-toggle hide-arrow"
+                                href="javascript:void(0);"
+                                data-bs-toggle="dropdown">
+                                <i class="ti ti-md"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-theme="light">
+                                        <span class="align-middle"><i class="ti ti-sun ti-md me-3"></i>Light</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-theme="dark">
+                                        <span class="align-middle"><i class="ti ti-moon-stars ti-md me-3"></i>Dark</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="javascript:void(0);" data-theme="system">
+                                        <span class="align-middle"><i class="ti ti-device-desktop-analytics ti-md me-3"></i>System</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- / Style Switcher-->
 
                         <!-- Quick links  -->
                         <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown">
@@ -464,7 +457,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar">
-                                                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle" />
+                                                        <img src="{{ asset('img/avatars/1.png') }}" alt class="rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -727,204 +720,443 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="app-ecommerce">
+                    <div class="row">
+                        <!-- User Sidebar -->
+                        <div class="col-xl-4 col-lg-5 order-1 order-md-0">
+                            <!-- User Card -->
+                            <div class="card mb-6">
+                                <div class="card-body pt-12">
+                                    <div class="user-avatar-section">
+                                        <div class="d-flex align-items-center flex-column">
+                                            <img
+                                                class="img-fluid rounded mb-4"
+                                                src="{{ asset('img/avatars/1.png') }}"
+                                                height="120"
+                                                width="120"
+                                                alt="User avatar" />
+                                            <div class="user-info text-center">
+                                                <h5>{{ $usuario['nombre'] }} {{ $usuario['apellido']}}</h5>
+                                                <span class="badge bg-label-secondary">Author</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-around flex-wrap my-6 gap-0 gap-md-3 gap-lg-4">
+                                        <div class="d-flex align-items-center me-5 gap-4">
+                                            <div class="avatar">
+                                                <div class="avatar-initial bg-label-primary rounded">
+                                                    <i class="ti ti-checkbox ti-lg"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">1.23k</h5>
+                                                <span>Tareas Completadas</span>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-4">
+                                            <div class="avatar">
+                                                <div class="avatar-initial bg-label-primary rounded">
+                                                    <i class="ti ti-briefcase ti-lg"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h5 class="mb-0">568</h5>
+                                                <span>Productos vendidos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="pb-4 border-bottom mb-4">Details</h5>
+                                    <div class="info-container">
+                                        <ul class="list-unstyled mb-6">
+                                            <li class="mb-2">
+                                                <span class="h6">Username:</span>
+                                                <span>{{ $usuario['nombre'] }}.{{ $usuario['apellido'] }}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="h6">RUT:</span>
+                                                <span>{{ $usuario['rut'] }}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="h6">Email:</span>
+                                                <span>{{ $usuario['email'] }}</span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center">
+                                            <a
+                                                href="javascript:;"
+                                                class="btn btn-primary me-4"
+                                                data-bs-target="#editUser"
+                                                data-bs-toggle="modal">Editar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /User Card -->
+                            <!-- Plan Card -->
+                            <div class="card mb-6 border border-2 border-primary rounded primary-shadow">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <span class="badge bg-label-primary">Standard</span>
+                                        <div class="d-flex justify-content-center">
+                                            <sub class="h5 pricing-currency mb-auto mt-1 text-primary">$</sub>
+                                            <h1 class="mb-0 text-primary">99</h1>
+                                            <sub class="h6 pricing-duration mt-auto mb-3 fw-normal">month</sub>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled g-2 my-6">
+                                        <li class="mb-2 d-flex align-items-center">
+                                            <i class="ti ti-circle-filled ti-10px text-secondary me-2"></i><span>10 Users</span>
+                                        </li>
+                                        <li class="mb-2 d-flex align-items-center">
+                                            <i class="ti ti-circle-filled ti-10px text-secondary me-2"></i><span>Up to 10 GB storage</span>
+                                        </li>
+                                        <li class="mb-2 d-flex align-items-center">
+                                            <i class="ti ti-circle-filled ti-10px text-secondary me-2"></i><span>Basic Support</span>
+                                        </li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="h6 mb-0">Days</span>
+                                        <span class="h6 mb-0">26 of 30 Days</span>
+                                    </div>
+                                    <div class="progress mb-1 bg-label-primary" style="height: 6px">
+                                        <div
+                                            class="progress-bar"
+                                            role="progressbar"
+                                            style="width: 65%"
+                                            aria-valuenow="65"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100"></div>
+                                    </div>
+                                    <small>4 days remaining</small>
+                                    <div class="d-grid w-100 mt-6">
+                                        <button class="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
+                                            Upgrade Plan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Plan Card -->
+                        </div>
+                        <!--/ User Sidebar -->
 
-                        <!-- Add Product -->
+                        <!-- User Content -->
+                        <div class="col-xl-8 col-lg-7 order-0 order-md-1">
+                            <!-- User Pills -->
+                            <div class="nav-align-top">
+                                <ul class="nav nav-pills flex-column flex-md-row flex-wrap mb-6 row-gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="javascript:void(0);"><i class="ti ti-user-check ti-sm me-1_5"></i>Account</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-user-view-security.html"><i class="ti ti-lock ti-sm me-1_5"></i>Security</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-user-view-billing.html"><i class="ti ti-bookmark ti-sm me-1_5"></i>Billing & Plans</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-user-view-notifications.html"><i class="ti ti-bell ti-sm me-1_5"></i>Notifications</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-user-view-connections.html"><i class="ti ti-link ti-sm me-1_5"></i>Connections</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/ User Pills -->
+
+                            <!-- Project table -->
+                            <div class="card mb-6">
+                                <div class="card-datatable table-responsive">
+                                    <table class="table border-top">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th></th>
+                                                <th>Project</th>
+                                                <th>Leader</th>
+                                                <th>Team</th>
+                                                <th class="w-px-200">Progress</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /Project table -->
+
+                            <!-- Activity Timeline -->
+                            <div class="card mb-6">
+                                <h5 class="card-header">User Activity Timeline</h5>
+                                <div class="card-body pt-1">
+                                    <ul class="timeline mb-0">
+                                        <li class="timeline-item timeline-item-transparent">
+                                            <span class="timeline-point timeline-point-primary"></span>
+                                            <div class="timeline-event">
+                                                <div class="timeline-header mb-3">
+                                                    <h6 class="mb-0">12 Invoices have been paid</h6>
+                                                    <small class="text-muted">12 min ago</small>
+                                                </div>
+                                                <p class="mb-2">Invoices have been paid to the company</p>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <div class="badge bg-lighter rounded d-flex align-items-center">
+                                                        <img src="{{ asset('img/icons/misc/pdf.png') }}" alt="img" width="15" class="me-2" />
+                                                        <span class="h6 mb-0 text-body">invoices.pdf</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="timeline-item timeline-item-transparent">
+                                            <span class="timeline-point timeline-point-success"></span>
+                                            <div class="timeline-event">
+                                                <div class="timeline-header mb-3">
+                                                    <h6 class="mb-0">Client Meeting</h6>
+                                                    <small class="text-muted">45 min ago</small>
+                                                </div>
+                                                <p class="mb-2">Project meeting with john @10:15am</p>
+                                                <div class="d-flex justify-content-between flex-wrap gap-2 mb-2">
+                                                    <div class="d-flex flex-wrap align-items-center mb-50">
+                                                        <div class="avatar avatar-sm me-2">
+                                                            <img src="{{ asset('img/avatars/1.png') }}" alt="Avatar" class="rounded-circle" />
+                                                        </div>
+                                                        <div>
+                                                            <p class="mb-0 small fw-medium">Lester McCarthy (Client)</p>
+                                                            <small>CEO of Pixinvent</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="timeline-item timeline-item-transparent">
+                                            <span class="timeline-point timeline-point-info"></span>
+                                            <div class="timeline-event">
+                                                <div class="timeline-header mb-3">
+                                                    <h6 class="mb-0">Create a new project for client</h6>
+                                                    <small class="text-muted">2 Day Ago</small>
+                                                </div>
+                                                <p class="mb-2">6 team members in a project</p>
+                                                <ul class="list-group list-group-flush">
+                                                    <li
+                                                        class="list-group-item d-flex justify-content-between align-items-center flex-wrap border-top-0 p-0">
+                                                        <div class="d-flex flex-wrap align-items-center">
+                                                            <ul class="list-unstyled users-list d-flex align-items-center avatar-group m-0 me-2">
+                                                                <li
+                                                                    data-bs-toggle="tooltip"
+                                                                    data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    title="Vinnie Mostowy"
+                                                                    class="avatar pull-up">
+                                                                    <img class="rounded-circle" src="{{ asset('img/avatars/5.png') }}" alt="Avatar" />
+                                                                </li>
+                                                                <li
+                                                                    data-bs-toggle="tooltip"
+                                                                    data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    title="Allen Rieske"
+                                                                    class="avatar pull-up">
+                                                                    <img class="rounded-circle" src="{{ asset('img/avatars/12.png') }}" alt="Avatar" />
+                                                                </li>
+                                                                <li
+                                                                    data-bs-toggle="tooltip"
+                                                                    data-popup="tooltip-custom"
+                                                                    data-bs-placement="top"
+                                                                    title="Julee Rossignol"
+                                                                    class="avatar pull-up">
+                                                                    <img class="rounded-circle" src="{{ asset('img/avatars/6.png') }}" alt="Avatar" />
+                                                                </li>
+                                                                <li class="avatar">
+                                                                    <span
+                                                                        class="avatar-initial rounded-circle pull-up text-heading"
+                                                                        data-bs-toggle="tooltip"
+                                                                        data-bs-placement="bottom"
+                                                                        title="3 more">+3</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /Activity Timeline -->
+
+                            <!-- Invoice table -->
+                            <div class="card mb-4">
+                                <div class="card-datatable table-responsive">
+                                    <table class="table datatable-invoice">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>#</th>
+                                                <th>Status</th>
+                                                <th>Total</th>
+                                                <th>Issued Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /Invoice table -->
+                        </div>
+                        <!--/ User Content -->
+                    </div>
+
+                    <!-- Modal -->
+                    <!-- Edit User Modal -->
+                    <div class="modal fade" id="editUser" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Editar información del Usuario</h4>
+                                    </div>
+                                    <form id="editUsuario" class="row g-6" method="POST" action="{{ route('usuarios.update', $usuario['id']) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="nombre">Nombre</label>
+                                            <input
+                                                type="text"
+                                                id="nombre"
+                                                name="nombre"
+                                                class="form-control"
+                                                placeholder="Pedro"
+                                                value="{{ old('nombre', $usuario['nombre']) }}" />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="apellido">Apellido</label>
+                                            <input
+                                                type="text"
+                                                id="apellido"
+                                                name="apellido"
+                                                class="form-control"
+                                                placeholder="Jara"
+                                                value="{{ old('apellido', $usuario['apellido']) }}" />
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="rut">RUT</label>
+                                            <input
+                                                type="text"
+                                                id="rut"
+                                                name="rut"
+                                                class="form-control"
+                                                placeholder="12345678-9"
+                                                maxlength="10"
+                                                value="{{ old('rut', $usuario['rut']) }}" />
+                                        </div>
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger" role="alert">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary me-3">Enviar</button>
+                                            <button
+                                                type="reset"
+                                                class="btn btn-label-secondary"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Edit User Modal -->
+
+                    <!-- Add New Credit Card Modal -->
+                    <div class="modal fade" id="upgradePlanModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-simple modal-upgrade-plan">
+                            <div class="modal-content">
+                                <div class="modal-body p-4">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Upgrade Plan</h4>
+                                        <p>Choose the best plan for user.</p>
+                                    </div>
+                                    <form id="upgradePlanForm" class="row g-4" onsubmit="return false">
+                                        <div class="col-sm-9">
+                                            <label class="form-label" for="choosePlan">Choose Plan</label>
+                                            <select id="choosePlan" name="choosePlan" class="form-select" aria-label="Choose Plan">
+                                                <option selected>Choose Plan</option>
+                                                <option value="standard">Standard - $99/month</option>
+                                                <option value="exclusive">Exclusive - $249/month</option>
+                                                <option value="Enterprise">Enterprise - $499/month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 d-flex align-items-end">
+                                            <button type="submit" class="btn btn-primary">Upgrade</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr class="mx-4 my-2" />
+                                <div class="modal-body p-4">
+                                    <p class="mb-0">User current plan is standard plan</p>
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <div class="d-flex justify-content-center me-2 mt-1">
+                                            <sup class="h6 pricing-currency pt-1 mt-2 mb-0 me-1 text-primary">$</sup>
+                                            <h1 class="mb-0 text-primary">99</h1>
+                                            <sub class="pricing-duration mt-auto mb-5 pb-1 small text-body">/month</sub>
+                                        </div>
+                                        <button class="btn btn-label-danger cancel-subscription">Cancel Subscription</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Add New Credit Card Modal -->
+
+                    <!-- /Modal -->
+                </div>
+                <!-- / Content -->
+
+                <!-- Footer -->
+                <footer class="content-footer footer bg-footer-theme">
+                    <div class="container-xxl">
                         <div
-                            class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
-                            <div class="d-flex flex-column justify-content-center">
-                                <h4 class="mb-1">Editar un Producto</h4>
+                            class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                            <div class="text-body">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link">Pixinvent</a>
                             </div>
-                            <button form="formProduct" type="submit" class="btn btn-primary">Actualizar producto</button>
+                            <div class="d-none d-lg-inline-block">
+                                <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
+                                <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
+
+                                <a
+                                    href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
+                                    target="_blank"
+                                    class="footer-link me-4">Documentation</a>
+
+                                <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+                            </div>
                         </div>
                     </div>
+                </footer>
+                <!-- / Footer -->
 
-                    @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-
-                    <form id="formProduct" class="row" method="POST" action="{{ route('productos.update', $producto['id']) }}">
-                        @csrf
-                        @method('PUT')
-                        <!-- First column-->
-                        <div class="col-12 col-lg-8">
-                            <!-- Product Information -->
-                            <div class="card mb-6">
-                                <div class="card-header">
-                                    <h5 class="card-tile mb-0">Información del Producto</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-name">Nombre</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="ecommerce-product-name"
-                                            placeholder="Nombre del producto"
-                                            name="nombre"
-                                            aria-label="Nombre del producto"
-                                            value="{{ old('nombre', $producto['nombre']) }}" />
-                                    </div>
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-name">Descripción corta</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="ecommerce-product-name"
-                                            placeholder="Descripción corta del producto"
-                                            name="descripcion_corta"
-                                            aria-label="Descripción corta del producto"
-                                            value="{{ old('descripcion_corta', $producto['descripcion_corta']) }}"
-                                            maxlength="150" />
-                                    </div>
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-name">URL de la imagen</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="ecommerce-product-name"
-                                            placeholder="URL de la imagen del producto"
-                                            name="imagen_url"
-                                            aria-label="URL de la imagen del producto"
-                                            value="{{ old('imagen_url', $producto['imagen_url']) }}" />
-                                    </div>
-                                    <!-- Description -->
-                                    <div>
-                                        <label class="mb-1" for="descripcion_larga">Descripción</label>
-                                        <textarea class="form-control p-0" name="descripcion_larga" style="resize:none; min-height:7rem">{{ old('descripcion_larga', $producto['descripcion_larga'])}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /Product Information -->
-                        </div>
-                        <!-- /Second column -->
-
-                        <!-- Second column -->
-                        <div class="col-12 col-lg-4">
-                            <!-- Pricing Card -->
-                            <div class="card mb-6">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">Contabilidad</h5>
-                                </div>
-                                <div class="card-body">
-                                    <!-- Base Price -->
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-price">Precio neto</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-price"
-                                            placeholder="Precio neto del producto"
-                                            name="precio_neto"
-                                            aria-label="Precio neto del producto"
-                                            value="{{ old('precio_neto', $producto['precio_neto']) }}" />
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock actual</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock actual del producto"
-                                            name="stock_actual"
-                                            aria-label="Stock actual del producto"
-                                            value="{{ old('stock_actual', $producto['stock_actual']) }}"/>
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock mínimo</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock mínimo del producto"
-                                            name="stock_minimo"
-                                            aria-label="Stock mínimo del producto"
-                                            value="{{ old('stock_minimo', $producto['stock_minimo']) }}"/>
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock bajo</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock bajo del producto"
-                                            name="stock_bajo"
-                                            aria-label="Stock bajo del producto"
-                                            value="{{ old('stock_bajo', $producto['stock_bajo']) }}"/>
-                                    </div>
-
-                                    <div class="mb-6">
-                                        <label class="form-label" for="ecommerce-product-discount-price">Stock alto</label>
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="ecommerce-product-discount-price"
-                                            placeholder="Stock alto del producto"
-                                            name="stock_alto"
-                                            aria-label="Stock alto del producto"
-                                            value="{{ old('stock_alto', $producto['stock_alto']) }}"/>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- /Pricing Card -->
-
-                        </div>
-                        <!-- /Second column -->
-                    </form>
-                </div>
+                <div class="content-backdrop fade"></div>
             </div>
-            <!-- / Content -->
-
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-                <div class="container-xxl">
-                    <div
-                        class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-                        <div class="text-body">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link">Pixinvent</a>
-                        </div>
-                        <div class="d-none d-lg-inline-block">
-                            <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
-                            <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
-
-                            <a
-                                href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
-                                target="_blank"
-                                class="footer-link me-4">Documentation</a>
-
-                            <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- / Footer -->
-
-            <div class="content-backdrop fade"></div>
+            <!-- Content wrapper -->
         </div>
-        <!-- Content wrapper -->
+        <!-- / Layout page -->
     </div>
-    <!-- / Layout page -->
-</div>
 
-<!-- Overlay -->
-<div class="layout-overlay layout-menu-toggle"></div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
 
-<!-- Drag Target Area To SlideIn Menu On Small Screens -->
-<div class="drag-target"></div>
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
 </div>
 
 @endsection

@@ -270,7 +270,7 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="app-user-list.html" class="menu-link">
+                            <a href="{{ route('usuarios.index') }}" class="menu-link">
                                 <div data-i18n="Lista">Lista</div>
                             </a>
                         </li>

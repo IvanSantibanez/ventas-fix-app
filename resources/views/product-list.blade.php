@@ -227,14 +227,14 @@
                 </li>
                 <!-- e-commerce-app menu end -->
                 <!-- Academy menu start -->
-                <li class="menu-item">
+                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons ti ti-users"></i>
                         <div data-i18n="Usuarios">Usuarios</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="app-user-list.html" class="menu-link">
+                            <a href="{{ route('usuarios.index') }}" class="menu-link">
                                 <div data-i18n="Lista">Lista</div>
                             </a>
                         </li>
@@ -808,7 +808,7 @@
                                 </ul>
                             </div>
                             @endif
-                            <table class="datatables-products table">
+                            <table class="table">
                                 <thead class="border-top">
                                     <tr>
                                         <th></th>

@@ -62,6 +62,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/@form-validation/form-validation.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/sweetalert2/sweetalert2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/animate-css/animate.css') }}" />
+
 
 
 
@@ -69,6 +71,7 @@
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/css/pages/cards-advance.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/css/pages/page-auth.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/css/pages/page-user-view.css') }}" />
 
 
     <!-- Helpers -->
@@ -117,6 +120,7 @@
     <script src="{{ asset('vendor/libs/@form-validation/bootstrap5.js') }}"></script>
     <script src="{{ asset('vendor/libs/@form-validation/auto-focus.js') }}"></script>
 
+
     <!-- Main JS -->
     <script src="{{ asset('js/main.js') }}"></script>
 
@@ -129,7 +133,19 @@
     <script src="{{ asset('js/modal-edit-user.js') }}"></script>
     <script src="{{ asset('js/app-ecommerce-customer-detail.js') }}"></script>
     <script src="{{ asset('js/app-ecommerce-customer-detail-overview.js') }}"></script>
+    <script src="{{ asset('js/modal-edit-user.js') }}"></script>
+    <script src="{{ asset('js/app-user-view.js') }}"></script>
+    <script src="{{ asset('js/app-user-view-account.js') }}"></script>
+    <script src="{{ asset('js/pages-profile.js') }}"></script>
+    <script src="{{ asset('js/app-user-list.js') }}"></script>
 
+<script>
+  $.fn.dataTable.ext.errMode = 'none';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    $('.js-dt').DataTable({ retrieve: true });
+  });
+</script>
 </body>
 
 </html>

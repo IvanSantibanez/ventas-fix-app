@@ -234,7 +234,7 @@
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="app-user-list.html" class="menu-link">
+                            <a href="{{ route('usuarios.index') }}" class="menu-link">
                                 <div data-i18n="Lista">Lista</div>
                             </a>
                         </li>
@@ -723,7 +723,7 @@
                     <div
                         class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between mb-6 text-center text-sm-start gap-2">
                         <div class="mb-2 mb-sm-0">
-                            <h4 class="mb-1">Customer ID #{{ $cliente['id'] }}</h4>
+                            <h4 class="mb-1">Cliente ID #{{ $cliente['id'] }}</h4>
                         </div>
                         <form action="{{ route('clientes.destroy', $cliente['id']) }}" method="POST">
                             @csrf
