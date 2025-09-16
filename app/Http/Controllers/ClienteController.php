@@ -42,7 +42,7 @@ class ClienteController extends Controller
     {
         $data = $request->validate(
             [
-                'rut_empresa' => 'required|string|regex:/^\d{7,8}-[\dkK]$/|max:10',
+                'rut_empresa' => 'required|string|regex:/^\d{7,8}-[\dkK]$/|max:100',
                 'rubro' => 'required|string|max:50',
                 'razon_social' => 'required|string|max:255',
                 'telefono' => 'required|regex:/^56\d{9}$/|string',
@@ -152,7 +152,7 @@ class ClienteController extends Controller
 
         $data = $request->validate(
             [
-                'rut_empresa' => 'required|string|regex:/^\d{7,8}-[\dkK]$/|max:10',
+                'rut_empresa' => 'required|string|regex:/^\d{7,8}-[\dkK]$/|max:100',
                 'rubro' => 'required|string|max:50',
                 'razon_social' => 'required|string|max:255',
                 'telefono' => 'required|regex:/^56\d{9}$/|string',
@@ -238,5 +238,128 @@ class ClienteController extends Controller
             'data' => null,
             'message' => 'Cliente eliminado exitosamente.'
         ], JsonResponse::HTTP_OK);
+    }
+
+    public function indexWeb()
+    {
+
+        try {
+            $clientes = Cliente::all();
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al obtener los clientes']);
+        }
+
+        if (!$clientes) {
+            return back()->withErrors(['error' => 'No hay clientes para mostrar']);
+        }
+
+        return view('customer-list', compact('clientes'));
+    }
+
+    public function showWeb(string $id)
+    {
+
+        try {
+            $cliente = Cliente::find($id);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al obtener el cliente.']);
+        }
+
+        return view('customer-detail', compact('cliente'));
+    }
+
+    public function updateWeb(Request $request, string $id)
+    {
+        $data = $request->validate(
+            [
+                'rut_empresa' => 'required|string|regex:/^\d{7,8}-[\dkK]$/|max:100',
+                'rubro' => 'required|string|max:50',
+                'razon_social' => 'required|string|max:255',
+                'telefono' => 'required|regex:/^56\d{9}$/|string',
+                'direccion' => 'required|string|max:255',
+                'nombre_contacto' => 'required|string|max:255',
+                'email_contacto' => 'required|email|max:255',
+
+            ],
+            [
+                'rut_empresa.regex' => 'El formato del RUT es inválido. Debe ser 12345678-9',
+                'telefono.regex' => 'El formato del teléfono es inválido. Debe comenzar con 56 seguido de 9 dígitos.',
+            ]
+        );
+
+        $rutExistente = Cliente::where('rut_empresa', $data['rut_empresa'])->where('id', '!=', $id)->first();
+
+        if ($rutExistente) {
+            return back()->withErrors(['error' => 'El RUT de la empresa ya está registrado en el sistema.']);
+        }
+
+        try {
+            $cliente = Cliente::find($id);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al buscar el cliente en el sistema.']);
+        }
+
+
+        try {
+            $cliente->update($data);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al actualizar el cliente.']);
+        }
+
+        return redirect()->route('clientes.index');
+    }
+
+    public function destroyWeb(string $id)
+    {
+        try {
+            $cliente = Cliente::find($id);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al buscar el cliente']);
+        }
+
+        if ($cliente) {
+            try {
+                $cliente->delete();
+            } catch (\Throwable $e) {
+                return back()->withErrors(['error' => 'Error al eliminar el cliente']);
+            }
+        }
+
+        return redirect()->route('clientes.index');
+    }
+
+    public function storeWeb(Request $request)
+    {
+
+        $data = $request->validate(
+            [
+                'rut_empresa' => 'required|string|regex:/^\d{7,8}-[\dkK]$/|max:100',
+                'rubro' => 'required|string|max:50',
+                'razon_social' => 'required|string|max:255',
+                'telefono' => 'required|regex:/^56\d{9}$/|string',
+                'direccion' => 'required|string|max:255',
+                'nombre_contacto' => 'required|string|max:255',
+                'email_contacto' => 'required|email|max:255',
+
+            ],
+            [
+                'rut_empresa.regex' => 'El formato del RUT es inválido. Debe ser 12345678-9',
+                'telefono.regex' => 'El formato del teléfono es inválido. Debe comenzar con 56 seguido de 9 dígitos.',
+            ]
+        );
+
+        $rut_empresa = Cliente::where('rut_empresa', $data['rut_empresa'])->first();
+
+        if ($rut_empresa) {
+            return back()->withErrors(['error' => 'El RUT de la empresa ya está registrado en el sistema.']);
+        }
+
+        try {
+            Cliente::create($data);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al crear el cliente.']);
+        }
+
+        return redirect()->route('clientes.index');
     }
 }

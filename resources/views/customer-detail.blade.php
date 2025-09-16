@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Lista de Productos - VentasFix')
+@section('title', 'Detalles del Cliente - VentasFix')
 
 @section('content')
 
@@ -583,7 +583,7 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar">
-                                                        <img src="{{ asset('img/avatars/6.png') }}" alt class="rounded-circle" />
+                                                        <img src=" {{ asset('img/avatars/6.png') }} " alt class="rounded-circle" />
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
@@ -690,8 +690,8 @@
                                 </li>
                                 <li>
                                     <div class="d-grid px-2 pt-2 pb-1">
-                                        <a class="btn btn-sm btn-danger d-flex" href="{{ route('logout') }}">
-                                            <small class="align-middle">Cerrar sesión</small>
+                                        <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html" target="_blank">
+                                            <small class="align-middle">Logout</small>
                                             <i class="ti ti-logout ms-2 ti-14px"></i>
                                         </a>
                                     </div>
@@ -720,140 +720,373 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <!-- Product List Widget -->
-                    <div class="card mb-6">
-                        <div class="card-widget-separator-wrapper">
-                            <div class="card-body card-widget-separator">
-                                <div class="row gy-4 gy-sm-1">
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div
-                                            class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-4 pb-sm-0">
-                                            <div>
-                                                <p class="mb-1">In-store Sales</p>
-                                                <h4 class="mb-1">$5,345.43</h4>
-                                                <p class="mb-0">
-                                                    <span class="me-2">5k orders</span><span class="badge bg-label-success">+5.7%</span>
-                                                </p>
+                    <div
+                        class="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between mb-6 text-center text-sm-start gap-2">
+                        <div class="mb-2 mb-sm-0">
+                            <h4 class="mb-1">Customer ID #{{ $cliente['id'] }}</h4>
+                        </div>
+                        <form action="{{ route('clientes.destroy', $cliente['id']) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-label-danger">Eliminar Cliente</button>
+                        </form>
+                    </div>
+
+                    <div class="row">
+                        <!-- Customer-detail Sidebar -->
+                        <div class="col-xl-4 col-lg-5 col-md-5 order-1 order-md-0">
+                            <!-- Customer-detail Card -->
+                            <div class="card mb-6">
+                                <div class="card-body pt-12">
+                                    <div class="customer-avatar-section">
+                                        <div class="d-flex align-items-center flex-column">
+                                            <img
+                                                class="img-fluid rounded mb-4"
+                                                src="{{ asset('img/avatars/1.png')}}"
+                                                height="120"
+                                                width="120"
+                                                alt="User avatar" />
+                                            <div class="customer-info text-center mb-6">
+                                                <h5 class="mb-0">{{ $cliente['razon_social'] }}</h5>
+                                                <span>Cliente ID #{{ $cliente['id'] }}</span>
                                             </div>
-                                            <span class="avatar me-sm-6">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-smart-home text-heading"></i></span>
-                                            </span>
-                                        </div>
-                                        <hr class="d-none d-sm-block d-lg-none me-6" />
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div
-                                            class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-4 pb-sm-0">
-                                            <div>
-                                                <p class="mb-1">Website Sales</p>
-                                                <h4 class="mb-1">$674,347.12</h4>
-                                                <p class="mb-0">
-                                                    <span class="me-2">21k orders</span><span class="badge bg-label-success">+12.4%</span>
-                                                </p>
-                                            </div>
-                                            <span class="avatar p-2 me-lg-6">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-device-laptop text-heading"></i></span>
-                                            </span>
-                                        </div>
-                                        <hr class="d-none d-sm-block d-lg-none" />
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div
-                                            class="d-flex justify-content-between align-items-start border-end pb-4 pb-sm-0 card-widget-3">
-                                            <div>
-                                                <p class="mb-1">Discount</p>
-                                                <h4 class="mb-1">$14,235.12</h4>
-                                                <p class="mb-0">6k orders</p>
-                                            </div>
-                                            <span class="avatar p-2 me-sm-6">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-gift text-heading"></i></span>
-                                            </span>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div>
-                                                <p class="mb-1">Affiliate</p>
-                                                <h4 class="mb-1">$8,345.23</h4>
-                                                <p class="mb-0">
-                                                    <span class="me-2">150 orders</span><span class="badge bg-label-danger">-3.5%</span>
-                                                </p>
-                                            </div>
-                                            <span class="avatar p-2">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-wallet text-heading"></i></span>
-                                            </span>
+
+
+                                    <div class="info-container">
+                                        <h5 class="pb-4 border-bottom text-capitalize mt-6 mb-4">Detalles</h5>
+                                        <ul class="list-unstyled mb-6">
+                                            <li class="mb-2">
+                                                <span class="h6 me-1">RUT Empresa:</span>
+                                                <span>{{ $cliente['rut_empresa'] }}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="h6 me-1">Rubro:</span>
+                                                <span> {{ $cliente['rubro'] }}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="h6 me-1">Teléfono:</span>
+                                                <span>{{ $cliente['telefono'] }}</span>
+                                            </li>
+                                            <li class="mb-2">
+                                                <span class="h6 me-1">Dirección:</span>
+                                                <span>{{ $cliente['direccion'] }}</span>
+                                            </li>
+
+                                            <li class="mb-2">
+                                                <span class="h6 me-1">Nombre Contacto:</span>
+                                                <span>{{ $cliente['nombre_contacto'] }}</span>
+                                            </li>
+
+                                            <li class="mb-2">
+                                                <span class="h6 me-1">Email Contacto:</span>
+                                                <span>{{ $cliente['email_contacto'] }}</span>
+                                            </li>
+                                        </ul>
+                                        <div class="d-flex justify-content-center">
+                                            <a
+                                                href="javascript:;"
+                                                class="btn btn-primary w-100"
+                                                data-bs-target="#editCustomer"
+                                                data-bs-toggle="modal">Editar</a>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Customer-detail Card -->
+                            <!-- Plan Card -->
+
+                            <!-- /Plan Card -->
+                        </div>
+                        <!--/ Customer Sidebar -->
+
+                        <!-- Customer Content -->
+                        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+                            <!-- Customer Pills -->
+                            <div class="nav-align-top">
+                                <ul class="nav nav-pills flex-column flex-md-row mb-6 row-gap-2">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="javascript:void(0);"><i class="ti ti-user ti-sm me-1_5"></i>Overview</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-ecommerce-customer-details-security.html"><i class="ti ti-lock ti-sm me-1_5"></i>Security</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-ecommerce-customer-details-billing.html"><i class="ti ti-map-pin ti-sm me-1_5"></i>Address & Billing</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="app-ecommerce-customer-details-notifications.html"><i class="ti ti-bell ti-sm me-1_5"></i>Notifications</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--/ Customer Pills -->
+
+                            <!-- / Customer cards -->
+                            <div class="row text-nowrap">
+                                <div class="col-md-6 mb-6">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <div class="card-icon mb-2">
+                                                <div class="avatar">
+                                                    <div class="avatar-initial rounded bg-label-primary">
+                                                        <i class="ti ti-currency-dollar ti-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-info">
+                                                <h5 class="card-title mb-2">Account Balance</h5>
+                                                <div class="d-flex align-items-baseline gap-1">
+                                                    <h5 class="text-primary mb-0">$2345</h5>
+                                                    <p class="mb-0">Credit Left</p>
+                                                </div>
+                                                <p class="mb-0 text-truncate">Account balance for next purchase</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-icon mb-2">
+                                                <div class="avatar">
+                                                    <div class="avatar-initial rounded bg-label-success">
+                                                        <i class="ti ti-gift ti-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-info">
+                                                <h5 class="card-title mb-2">Loyalty Program</h5>
+                                                <span class="badge bg-label-success mb-2">Platinum member</span>
+                                                <p class="mb-0">3000 points to next tier</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-icon mb-2">
+                                                <div class="avatar">
+                                                    <div class="avatar-initial rounded bg-label-warning">
+                                                        <i class="ti ti-star ti-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-info">
+                                                <h5 class="card-title mb-2">Wishlist</h5>
+                                                <div class="d-flex align-items-baseline gap-1">
+                                                    <h5 class="text-warning mb-0">15</h5>
+                                                    <p class="mb-0">Items in wishlist</p>
+                                                </div>
+                                                <p class="mb-0 text-truncate">Receive notification when items go on sale</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="card-icon mb-2">
+                                                <div class="avatar">
+                                                    <div class="avatar-initial rounded bg-label-info">
+                                                        <i class="ti ti-crown ti-lg"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-info">
+                                                <h5 class="card-title mb-2">Coupons</h5>
+                                                <div class="d-flex align-items-baseline gap-1">
+                                                    <h5 class="text-info mb-0">21</h5>
+                                                    <p class="mb-0">Coupons you win</p>
+                                                </div>
+
+                                                <p class="mb-0 text-truncate">Use coupon on next purchase</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- / customer cards -->
+
+                            <!-- Invoice table -->
+                            <div class="card mb-6">
+                                <div class="table-responsive mb-4">
+                                    <table class="table datatables-customer-order border-top">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Order</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Spent</th>
+                                                <th class="text-md-center">Actions</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- /Invoice table -->
+                        </div>
+                        <!--/ Customer Content -->
+                    </div>
+
+                    <!-- Modal -->
+                    <!-- Edit User Modal -->
+                    <div class="modal fade" id="editCustomer" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-simple modal-edit-user">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Editar información del cliente</h4>
+                                    </div>
+                                    <form id="editCustomer" class="row g-6" method="POST" action="{{ route('clientes.update', $cliente['id']) }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="rut_empresa">RUT Empresa</label>
+                                            <input
+                                                type="text"
+                                                id="rut_empresa"
+                                                name="rut_empresa"
+                                                class="form-control"
+                                                placeholder="98765432-1"
+                                                value="{{ old('rut_empresa', $cliente['rut_empresa']) }}" />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="razon_social">Razón Social</label>
+                                            <input
+                                                type="text"
+                                                id="razon_social"
+                                                name="razon_social"
+                                                class="form-control"
+                                                placeholder="Nombre empresa"
+                                                value="{{ old('razon_social', $cliente['razon_social']) }}" />
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="direccion">Dirección</label>
+                                            <input
+                                                type="text"
+                                                id="direccion"
+                                                name="direccion"
+                                                class="form-control"
+                                                placeholder="Dirección empresa"
+                                                value="{{ old('direccion', $cliente['direccion']) }}" />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="email_contacto">Email del Contacto</label>
+                                            <input
+                                                type="text"
+                                                id="email_contacto"
+                                                name="email_contacto"
+                                                class="form-control"
+                                                placeholder="ejemplo@dominio.com"
+                                                value="{{ old('email_contacto', $cliente['email_contacto']) }}" />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="email_contacto">Nombre del Contacto</label>
+                                            <input
+                                                type="text"
+                                                id="nombre_contacto"
+                                                name="nombre_contacto"
+                                                class="form-control"
+                                                placeholder="nombre contacto"
+                                                value="{{ old('nombre_contacto', $cliente['nombre_contacto']) }}" />
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="telefono">Teléfono</label>
+                                            <div class="input-group">
+                                                <input
+                                                    type="number"
+                                                    id="telefono"
+                                                    name="telefono"
+                                                    class="form-control"
+                                                    placeholder="56912345678"
+                                                    maxlength="11"
+                                                    value="{{ old('telefono', $cliente['telefono']) }}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="email_contacto">Rubro</label>
+                                            <input
+                                                type="text"
+                                                id="rubro"
+                                                name="rubro"
+                                                class="form-control"
+                                                placeholder="nombre contacto"
+                                                value="{{ old('rubro', $cliente['rubro']) }}" />
+                                        </div>
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger" role="alert">
+                                            <ul class="mb-0">
+                                                @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+                                        <div class="col-12 text-center">
+                                            <button type="submit" class="btn btn-primary me-3">Enviar</button>
+                                            <button
+                                                type="reset"
+                                                class="btn btn-label-secondary"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Edit User Modal -->
+
+                    <!-- Add New Credit Card Modal -->
+                    <div class="modal fade" id="upgradePlanModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-simple modal-upgrade-plan">
+                            <div class="modal-content">
+                                <div class="modal-body p-4">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="text-center mb-6">
+                                        <h4 class="mb-2">Upgrade Plan</h4>
+                                        <p>Choose the best plan for user.</p>
+                                    </div>
+                                    <form id="upgradePlanForm" class="row g-4" onsubmit="return false">
+                                        <div class="col-sm-9">
+                                            <label class="form-label" for="choosePlan">Choose Plan</label>
+                                            <select id="choosePlan" name="choosePlan" class="form-select" aria-label="Choose Plan">
+                                                <option selected>Choose Plan</option>
+                                                <option value="standard">Standard - $99/month</option>
+                                                <option value="exclusive">Exclusive - $249/month</option>
+                                                <option value="Enterprise">Enterprise - $499/month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 d-flex align-items-end">
+                                            <button type="submit" class="btn btn-primary">Upgrade</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <hr class="mx-4 my-2" />
+                                <div class="modal-body p-4">
+                                    <p class="mb-0">User current plan is standard plan</p>
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <div class="d-flex justify-content-center me-2 mt-1">
+                                            <sup class="h6 pricing-currency pt-1 mt-2 mb-0 me-1 text-primary">$</sup>
+                                            <h1 class="mb-0 text-primary">99</h1>
+                                            <sub class="pricing-duration mt-auto mb-5 pb-1 small text-body">/month</sub>
+                                        </div>
+                                        <button class="btn btn-label-danger cancel-subscription">Cancel Subscription</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--/ Add New Credit Card Modal -->
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Lista de productos</h5>
-                            <div class="d-flex justify-content-between align-items-center row pt-4 gap-6 gap-md-0">
-                                <div class="col-md-4 product_status"></div>
-                                <div class="col-md-4 product_category"></div>
-                                <div class="col-md-4 product_stock"></div>
-                            </div>
-                        </div>
-                        <div class="card-datatable table-responsive">
-                            @if ($errors->any())
-                            <div class="alert alert-danger" role="alert">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif
-                            <table class="datatables-products table">
-                                <thead class="border-top">
-                                    <tr>
-                                        <th></th>
-                                        <th>Sku</th>
-                                        <th>Producto</th>
-                                        <th>Descripción</th>
-                                        <th>Precio Venta</th>
-                                        <th>Stock Actual</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($productos as $producto)
-                                    <tr>
-                                        <td>
-                                            <button type="button"
-                                                class="btn rounded-circle"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modal-{{ $producto->id }}">
-                                                <i class="fa-solid fa-circle-plus" style="color:#7367F0; font-size:24px;"></i>
-                                            </button>
-                                        </td>
-
-                                        <td>{{ $producto['sku'] }}</td>
-                                        <td class="fw-semibold">
-                                            <div class="d-flex align-items-center justify-content-start">
-                                                <div class="avatar-wrapper">
-                                                    <div class="avatar bg-label-secondary me-4 rounded-2">
-                                                        <img src="{{ $producto['imagen_url'] }}" alt="{{ $producto['nombre'] }}" class="rounded-2">
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex flex-column">
-                                                    <h6 class="text-nowrap mb-0">{{ $producto['nombre'] }}</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{{ $producto['descripcion_corta'] }}</td>
-                                        <td>${{ $producto['precio_venta'] }}</td>
-                                        <td>{{ $producto['stock_actual'] }}</td>
-
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <!-- /Modal -->
                 </div>
                 <!-- / Content -->
 
@@ -899,112 +1132,6 @@
     <div class="drag-target"></div>
 </div>
 
-@foreach ($productos as $producto)
-<div class="modal fade dtr-bs-modal" id="modal-{{ $producto->id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h4 class="modal-title">Detalles de {{ $producto->nombre }}</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-                <table class="table">
-                    <tbody>
-
-                        <tr>
-                            <td class="text-capitalize">producto:</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-start">
-                                    <div class="avatar-wrapper">
-                                        <div class="avatar bg-label-secondary me-4 rounded-2">
-                                            <img src="{{ $producto['imagen_url'] }}" alt="{{ $producto['nombre'] }}" class="rounded-2">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <h6 class="text-nowrap mb-0">{{ $producto['nombre'] }}</h6>
-                                        <small class="d-none d-sm-block text-truncate">{{ $producto['descripcion_corta'] }}</small>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize">sku:</td>
-                            <td>
-                                <div>{{ $producto['sku'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize">descripción:</td>
-                            <td>
-                                <div>{{ $producto['descripcion_larga'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">precio neto:</td>
-                            <td>
-                                <div>{{ $producto['precio_neto'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">precio venta:</td>
-                            <td>
-                                <div>{{ $producto['precio_venta'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock actual:</td>
-                            <td>
-                                <div>{{ $producto['stock_actual'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock mínimo:</td>
-                            <td>
-                                <div>{{ $producto['stock_minimo'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock bajo:</td>
-                            <td>
-                                <div>{{ $producto['stock_bajo'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock alto:</td>
-                            <td>
-                                <div>{{ $producto['stock_alto'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize">Acciones:</td>
-                            <td>
-                                <a href="{{ route('productos.editView', $producto['id']) }}" class="btn btn-primary waves-effect waves-light">Editar</a>
-                                <form action="{{ route('productos.destroy', $producto['id']) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-label-danger delete-customer waves-effect">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 
 
 @endsection

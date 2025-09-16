@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\JWTAuthController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,9 @@ Route::middleware('auth.jwt')->group(function () {
     Route::get('/productos/{id}/editar', [ProductoController::class, 'getEditView'])->name('productos.editView');
     Route::put('/productos/{id}/editar', [ProductoController::class, 'updateWeb'])->name('productos.update');
 
+    Route::get('/clientes', [ClienteController::class, 'indexWeb'])->name('clientes.index');
+    Route::get('/clientes/{id}', [ClienteController::class, 'showWeb'])->name('clientes.show');
+    Route::put('/clientes/{id}/editar', [ClienteController::class, 'updateWeb'])->name('clientes.update');
+    Route::delete('/clientes/{id}', [ClienteController::class, 'destroyWeb'])->name('clientes.destroy');
+    Route::post('/clientes', [ClienteController::class, 'storeWeb'])->name('clientes.store');
 });

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Lista de Productos - VentasFix')
+@section('title', 'Lista de clientes - VentasFix')
 
 @section('content')
 
@@ -141,7 +141,7 @@
                     </ul>
                 </li>
 
-                <!-- Front Pages -->
+               <!-- Front Pages -->
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons ti ti-files"></i>
@@ -690,8 +690,8 @@
                                 </li>
                                 <li>
                                     <div class="d-grid px-2 pt-2 pb-1">
-                                        <a class="btn btn-sm btn-danger d-flex" href="{{ route('logout') }}">
-                                            <small class="align-middle">Cerrar sesión</small>
+                                        <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html" target="_blank">
+                                            <small class="align-middle">Logout</small>
                                             <i class="ti ti-logout ms-2 ti-14px"></i>
                                         </a>
                                     </div>
@@ -718,140 +718,169 @@
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <!-- Content -->
-
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <!-- Product List Widget -->
-                    <div class="card mb-6">
-                        <div class="card-widget-separator-wrapper">
-                            <div class="card-body card-widget-separator">
-                                <div class="row gy-4 gy-sm-1">
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div
-                                            class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-4 pb-sm-0">
-                                            <div>
-                                                <p class="mb-1">In-store Sales</p>
-                                                <h4 class="mb-1">$5,345.43</h4>
-                                                <p class="mb-0">
-                                                    <span class="me-2">5k orders</span><span class="badge bg-label-success">+5.7%</span>
-                                                </p>
-                                            </div>
-                                            <span class="avatar me-sm-6">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-smart-home text-heading"></i></span>
-                                            </span>
-                                        </div>
-                                        <hr class="d-none d-sm-block d-lg-none me-6" />
+                    <!-- customers List Table -->
+                    <div class="card">
+                        <div class="card-datatable table-responsive">
+
+                            <div class="dataTables_wrapper dt-bootstrap5 no-footer">
+                                <div class="card-header d-flex flex-wrap flex-md-row flex-column align-items-start align-items-sm-center py-0">
+                                    <div class="d-flex align-items-center me-5">
+                                        <div id="DataTables_Table_0_filter" class="dataTables_filter ms-n3 mb-0 mb-md-6"><label><input type="search" class="form-control" placeholder="Search Order" aria-controls="DataTables_Table_0"></label></div>
                                     </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div
-                                            class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-4 pb-sm-0">
-                                            <div>
-                                                <p class="mb-1">Website Sales</p>
-                                                <h4 class="mb-1">$674,347.12</h4>
-                                                <p class="mb-0">
-                                                    <span class="me-2">21k orders</span><span class="badge bg-label-success">+12.4%</span>
-                                                </p>
-                                            </div>
-                                            <span class="avatar p-2 me-lg-6">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-device-laptop text-heading"></i></span>
-                                            </span>
-                                        </div>
-                                        <hr class="d-none d-sm-block d-lg-none" />
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div
-                                            class="d-flex justify-content-between align-items-start border-end pb-4 pb-sm-0 card-widget-3">
-                                            <div>
-                                                <p class="mb-1">Discount</p>
-                                                <h4 class="mb-1">$14,235.12</h4>
-                                                <p class="mb-0">6k orders</p>
-                                            </div>
-                                            <span class="avatar p-2 me-sm-6">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-gift text-heading"></i></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div>
-                                                <p class="mb-1">Affiliate</p>
-                                                <h4 class="mb-1">$8,345.23</h4>
-                                                <p class="mb-0">
-                                                    <span class="me-2">150 orders</span><span class="badge bg-label-danger">-3.5%</span>
-                                                </p>
-                                            </div>
-                                            <span class="avatar p-2">
-                                                <span class="avatar-initial rounded"><i class="ti-28px ti ti-wallet text-heading"></i></span>
-                                            </span>
+                                    <div class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-md-end flex-wrap flex-sm-nowrap mb-6 mb-sm-0 pt-0">
+                                        <div class="dataTables_length ms-n2 me-2" id="DataTables_Table_0_length"><label><select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select></label></div>
+                                        <div class="dt-buttons btn-group flex-wrap d-flex">
+                                            <div class="btn-group"><button class="btn btn-secondary buttons-collection dropdown-toggle btn-label-secondary me-4 waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="dialog" aria-expanded="false"><span><i class="ti ti-upload ti-xs me-2"></i>Export</span></button></div> <button class="btn btn-secondary add-new btn-primary waves-effect waves-light" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEcommerceCustomerAdd"><span><i class="ti ti-plus me-0 me-sm-1 mb-1 ti-xs"></i><span class="d-none d-sm-inline-block">Agregar Cliente</span></span></button>
                                         </div>
                                     </div>
                                 </div>
+
+                                <table class="datatables-customers table border-top">
+                                    <thead>
+                                        <tr>
+                                            <th>Razón social</th>
+                                            <th>RUT empresa</th>
+                                            <th>Rubro</th>
+                                            <th>Nombre Contacto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($clientes as $cliente)
+                                        <tr>
+                                            <td><a href="{{ route('clientes.show', $cliente['id']) }}" style="cursor:pointer">{{ $cliente['razon_social'] }}</a></td>
+                                            <td>{{ $cliente['rut_empresa'] }}</td>
+                                            <td>{{ $cliente['rubro'] }}</td>
+                                            <td>{{ $cliente['nombre_contacto'] }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">Lista de productos</h5>
-                            <div class="d-flex justify-content-between align-items-center row pt-4 gap-6 gap-md-0">
-                                <div class="col-md-4 product_status"></div>
-                                <div class="col-md-4 product_category"></div>
-                                <div class="col-md-4 product_stock"></div>
+                        <!-- Offcanvas to add new customer -->
+                        <div
+                            class="offcanvas offcanvas-end"
+                            tabindex="-1"
+                            id="offcanvasEcommerceCustomerAdd"
+                            aria-labelledby="offcanvasEcommerceCustomerAddLabel">
+                            <div class="offcanvas-header">
+                                <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Agregar Cliente</h5>
+                                <button
+                                    type="button"
+                                    class="btn-close text-reset"
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
                             </div>
-                        </div>
-                        <div class="card-datatable table-responsive">
-                            @if ($errors->any())
-                            <div class="alert alert-danger" role="alert">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <div class="offcanvas-body border-top mx-0 flex-grow-0">
+                                <form class="ecommerce-customer-add pt-0" id="addCustomer" method="POST" action="{{ route('clientes.store') }}">
+                                    @csrf
+                                    <div class="ecommerce-customer-add-basic mb-4">
+                                        <h6 class="mb-6">Información de la Empresa</h6>
+                                        <div class="mb-6">
+                                            <label class="form-label" for="ecommerce-customer-add-name">Razón Social</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="ecommerce-customer-add-name"
+                                                placeholder="Empresa SA"
+                                                name="razon_social"
+                                                aria-label="Empresa SA"
+                                                value="{{ old('razon_social') }}" />
+                                        </div>
+                                        <div class="mb-6">
+                                            <label class="form-label" for="ecommerce-customer-add-email">RUT</label>
+                                            <input
+                                                type="text"
+                                                id="ecommerce-customer-add-email"
+                                                class="form-control"
+                                                placeholder="98765432-1"
+                                                aria-label="98765432-1"
+                                                maxlength="10"
+                                                name="rut_empresa"
+                                                value="{{ old('rut_empresa') }}" />
+                                        </div>
+                                        <div class="mb-6">
+                                            <label class="form-label" for="ecommerce-customer-add-rubro">Rubro</label>
+                                            <input
+                                                type="text"
+                                                id="ecommerce-customer-add-rubro"
+                                                class="form-control"
+                                                placeholder="Tecnología"
+                                                aria-label="Tecnología"
+                                                name="rubro"
+                                                value="{{ old('rubro') }}" />
+                                        </div>
+                                        <div class="mb-6">
+                                            <label class="form-label" for="ecommerce-customer-add-contact">Teléfono</label>
+                                            <input
+                                                type="text"
+                                                id="ecommerce-customer-add-contact"
+                                                class="form-control"
+                                                placeholder="56912345678"
+                                                aria-label="56912345678"
+                                                name="telefono"
+                                                maxlength="11"
+                                                value="{{ old('telefono') }}" />
+                                        </div>
+                                        <div>
+                                            <label class="form-label" for="ecommerce-customer-add-direccion">Dirección</label>
+                                            <input
+                                                type="text"
+                                                id="ecommerce-customer-add-direccion"
+                                                class="form-control"
+                                                placeholder="Av 123"
+                                                aria-label="Av 123"
+                                                name="direccion"
+                                                value="{{ old('direccion') }}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="ecommerce-customer-add-shiping mb-6 pt-4">
+                                        <h6 class="mb-6">Información del Contacto</h6>
+                                        <div class="mb-6">
+                                            <label class="form-label" for="ecommerce-customer-add-contact-name">Nombre</label>
+                                            <input
+                                                type="text"
+                                                id="ecommerce-customer-add-contact-name"
+                                                class="form-control"
+                                                placeholder="Alvaro Rojas"
+                                                aria-label="Alvaro Rojas"
+                                                name="nombre_contacto"
+                                                value="{{ old('nombre_contacto') }}" />
+                                        </div>
+                                        <div class="mb-6">
+                                            <label class="form-label" for="ecommerce-customer-add-email">Email</label>
+                                            <input
+                                                type="email"
+                                                id="ecommerce-customer-add-email"
+                                                class="form-control"
+                                                placeholder="contacto@dominio.cl"
+                                                aria-label="contacto@dominio.cl"
+                                                name="email_contacto"
+                                                value="{{ old('email_contacto') }}" />
+                                        </div>
+                                    </div>
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger" role="alert">
+                                        <ul class="mb-0">
+                                            @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif
+                                    <div>
+                                        <button type="submit" class="btn btn-primary me-sm-4 data-submit">Agregar</button>
+                                        <button type="reset" class="btn btn-label-danger" data-bs-dismiss="offcanvas">Descartar</button>
+                                    </div>
+                                </form>
                             </div>
-                            @endif
-                            <table class="datatables-products table">
-                                <thead class="border-top">
-                                    <tr>
-                                        <th></th>
-                                        <th>Sku</th>
-                                        <th>Producto</th>
-                                        <th>Descripción</th>
-                                        <th>Precio Venta</th>
-                                        <th>Stock Actual</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($productos as $producto)
-                                    <tr>
-                                        <td>
-                                            <button type="button"
-                                                class="btn rounded-circle"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#modal-{{ $producto->id }}">
-                                                <i class="fa-solid fa-circle-plus" style="color:#7367F0; font-size:24px;"></i>
-                                            </button>
-                                        </td>
-
-                                        <td>{{ $producto['sku'] }}</td>
-                                        <td class="fw-semibold">
-                                            <div class="d-flex align-items-center justify-content-start">
-                                                <div class="avatar-wrapper">
-                                                    <div class="avatar bg-label-secondary me-4 rounded-2">
-                                                        <img src="{{ $producto['imagen_url'] }}" alt="{{ $producto['nombre'] }}" class="rounded-2">
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex flex-column">
-                                                    <h6 class="text-nowrap mb-0">{{ $producto['nombre'] }}</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{{ $producto['descripcion_corta'] }}</td>
-                                        <td>${{ $producto['precio_venta'] }}</td>
-                                        <td>{{ $producto['stock_actual'] }}</td>
-
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -898,113 +927,5 @@
     <!-- Drag Target Area To SlideIn Menu On Small Screens -->
     <div class="drag-target"></div>
 </div>
-
-@foreach ($productos as $producto)
-<div class="modal fade dtr-bs-modal" id="modal-{{ $producto->id }}" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h4 class="modal-title">Detalles de {{ $producto->nombre }}</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-                <table class="table">
-                    <tbody>
-
-                        <tr>
-                            <td class="text-capitalize">producto:</td>
-                            <td>
-                                <div class="d-flex align-items-center justify-content-start">
-                                    <div class="avatar-wrapper">
-                                        <div class="avatar bg-label-secondary me-4 rounded-2">
-                                            <img src="{{ $producto['imagen_url'] }}" alt="{{ $producto['nombre'] }}" class="rounded-2">
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <h6 class="text-nowrap mb-0">{{ $producto['nombre'] }}</h6>
-                                        <small class="d-none d-sm-block text-truncate">{{ $producto['descripcion_corta'] }}</small>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize">sku:</td>
-                            <td>
-                                <div>{{ $producto['sku'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize">descripción:</td>
-                            <td>
-                                <div>{{ $producto['descripcion_larga'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">precio neto:</td>
-                            <td>
-                                <div>{{ $producto['precio_neto'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">precio venta:</td>
-                            <td>
-                                <div>{{ $producto['precio_venta'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock actual:</td>
-                            <td>
-                                <div>{{ $producto['stock_actual'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock mínimo:</td>
-                            <td>
-                                <div>{{ $producto['stock_minimo'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock bajo:</td>
-                            <td>
-                                <div>{{ $producto['stock_bajo'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize text-nowrap">stock alto:</td>
-                            <td>
-                                <div>{{ $producto['stock_alto'] }}</div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td class="text-capitalize">Acciones:</td>
-                            <td>
-                                <a href="{{ route('productos.editView', $producto['id']) }}" class="btn btn-primary waves-effect waves-light">Editar</a>
-                                <form action="{{ route('productos.destroy', $producto['id']) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-label-danger delete-customer waves-effect">Eliminar</button>
-                                </form>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
-
 
 @endsection

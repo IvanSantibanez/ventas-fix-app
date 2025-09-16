@@ -59,6 +59,12 @@
     <link rel="stylesheet" href="{{ asset('vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}" />
     <link rel="stylesheet" href="{{ asset('vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/@form-validation/form-validation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('vendor/libs/sweetalert2/sweetalert2.css') }}" />
+
+
+
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('vendor/css/pages/cards-advance.css') }}" />
@@ -103,6 +109,13 @@
     <script src="{{ asset('vendor/libs/jquery-repeater/jquery-repeater.js') }}"></script>
     <script src="{{ asset('vendor/libs/flatpickr/flatpickr.js') }}"></script>
     <script src="{{ asset('vendor/libs/tagify/tagify.js') }}"></script>
+    <script src="{{ asset('vendor/libs/moment/moment.js') }}"></script>
+    <script src="{{ asset('vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
+    <script src="{{ asset('vendor/libs/cleavejs/cleave.js') }}"></script>
+    <script src="{{ asset('vendor/libs/cleavejs/cleave-phone.js') }}"></script>
+    <script src="{{ asset('vendor/libs/@form-validation/popular.js') }}"></script>
+    <script src="{{ asset('vendor/libs/@form-validation/bootstrap5.js') }}"></script>
+    <script src="{{ asset('vendor/libs/@form-validation/auto-focus.js') }}"></script>
 
     <!-- Main JS -->
     <script src="{{ asset('js/main.js') }}"></script>
@@ -112,6 +125,10 @@
     <script src="{{ asset('js/app-ecommerce-dashboard.js') }}"></script>
     <script src="{{ asset('js/app-ecommerce-product-list.js') }}"></script>
     <script src="{{ asset('js/app-ecommerce-product-add.js') }}"></script>
+    <script src="{{ asset('js/app-ecommerce-customer-all.js')}}"></script>
+    <script src="{{ asset('js/modal-edit-user.js') }}"></script>
+    <script src="{{ asset('js/app-ecommerce-customer-detail.js') }}"></script>
+    <script src="{{ asset('js/app-ecommerce-customer-detail-overview.js') }}"></script>
 
 </body>
 

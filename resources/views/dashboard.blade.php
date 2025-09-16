@@ -141,7 +141,7 @@
                     </ul>
                 </li>
 
-                <!-- Front Pages -->
+               <!-- Front Pages -->
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons ti ti-files"></i>
@@ -212,40 +212,13 @@
 
                         <li class="menu-item">
                             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                <div data-i18n="Customer">Customer</div>
+                                <div data-i18n="Cliente">Cliente</div>
                             </a>
                             <ul class="menu-sub">
                                 <li class="menu-item">
-                                    <a href="app-ecommerce-customer-all.html" class="menu-link">
-                                        <div data-i18n="All Customers">All Customers</div>
+                                    <a href="{{ route('clientes.index') }}" class="menu-link">
+                                        <div data-i18n="Lista de Clientes">Lista de Clientes</div>
                                     </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="javascript:void(0);" class="menu-link menu-toggle">
-                                        <div data-i18n="Customer Details">Customer Details</div>
-                                    </a>
-                                    <ul class="menu-sub">
-                                        <li class="menu-item">
-                                            <a href="app-ecommerce-customer-details-overview.html" class="menu-link">
-                                                <div data-i18n="Overview">Overview</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="app-ecommerce-customer-details-security.html" class="menu-link">
-                                                <div data-i18n="Security">Security</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="app-ecommerce-customer-details-billing.html" class="menu-link">
-                                                <div data-i18n="Address & Billing">Address & Billing</div>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="app-ecommerce-customer-details-notifications.html" class="menu-link">
-                                                <div data-i18n="Notifications">Notifications</div>
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -253,6 +226,20 @@
                     </ul>
                 </li>
                 <!-- e-commerce-app menu end -->
+                <!-- Academy menu start -->
+                <li class="menu-item">
+                    <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <i class="menu-icon tf-icons ti ti-users"></i>
+                        <div data-i18n="Usuarios">Usuarios</div>
+                    </a>
+                    <ul class="menu-sub">
+                        <li class="menu-item">
+                            <a href="app-user-list.html" class="menu-link">
+                                <div data-i18n="Lista">Lista</div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </aside>
         <!-- / Menu -->
