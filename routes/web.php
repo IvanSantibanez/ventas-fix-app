@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JWTAuthController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ Route::get('/logout', [JWTAuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth.jwt')->group(function () {
 
-    Route::get('/dashboard', [ProductoController::class, 'dashboardCounts'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboardCounts'])->name('dashboard');
 
     Route::get('/product-list', function () {
         return view('product-list');
@@ -34,7 +35,6 @@ Route::middleware('auth.jwt')->group(function () {
     Route::get('/product-add', function () {
         return view('product-add');
     })->name('product-add');
-
 
     Route::get('/productos', [ProductoController::class, 'indexWeb'])->name('productos.index');
     Route::delete('/productos/{id}', [ProductoController::class, 'destroyWeb'])->name('productos.destroy');
