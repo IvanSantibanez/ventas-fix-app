@@ -225,8 +225,8 @@ class JWTAuthController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (isset($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request['password']);
         }
 
         $email = $request->nombre . "." . $request->apellido . "@ventasfix.cl";
@@ -289,10 +289,6 @@ class JWTAuthController extends Controller
             'nombre' => 'required|string|max:100',
             'apellido' => 'required|string|max:100'
         ]);
-
-        if (isset($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        }
 
         $email = $request->nombre . "." . $request->apellido . "@ventasfix.cl";
 
