@@ -199,7 +199,7 @@
                             </a>
                             <ul class="menu-sub">
                                 <li class="menu-item active">
-                                    <a href="{{ route('product-list') }}" class="menu-link">
+                                    <a href="{{ route('productos.index') }}" class="menu-link">
                                         <div data-i18n="Lista de Productos">Lista de Productos</div>
                                     </a>
                                 </li>
@@ -813,6 +813,15 @@
                             </div>
                         </div>
                         <div class="card-datatable table-responsive">
+                            @if ($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                             <table class="datatables-products table">
                                 <thead class="border-top">
                                     <tr>
@@ -994,7 +1003,7 @@
                         <tr>
                             <td class="text-capitalize">Acciones:</td>
                             <td>
-                                <a href="javascript:;" class="btn btn-primary waves-effect waves-light">Editar</a>
+                                <a href="{{ route('productos.editView', $producto['id']) }}" class="btn btn-primary waves-effect waves-light">Editar</a>
                                 <form action="{{ route('productos.destroy', $producto['id']) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')

@@ -5,7 +5,7 @@
     class="light-style layout-navbar-fixed layout-menu-fixed layout-compact"
     dir="ltr"
     data-theme="theme-default"
-    data-assets-path=""
+    data-assets-path="{{ asset('') }}"
     data-template="vertical-menu-template-no-customizer"
     data-style="light">
 

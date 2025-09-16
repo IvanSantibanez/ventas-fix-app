@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Agregar Producto - VentasFix')
+@section('title', 'Editar Producto - VentasFix')
 
 @section('content')
 
@@ -709,9 +709,9 @@
                         <div
                             class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
                             <div class="d-flex flex-column justify-content-center">
-                                <h4 class="mb-1">Agregar un nuevo Producto</h4>
+                                <h4 class="mb-1">Editar un Producto</h4>
                             </div>
-                            <button form="formProduct" type="submit" class="btn btn-primary">Guardar producto</button>
+                            <button form="formProduct" type="submit" class="btn btn-primary">Actualizar producto</button>
                         </div>
                     </div>
 
@@ -725,8 +725,9 @@
                     </div>
                     @endif
 
-                    <form id="formProduct" class="row" method="POST" action="{{ route('productos.store') }}">
+                    <form id="formProduct" class="row" method="POST" action="{{ route('productos.update', $producto['id']) }}">
                         @csrf
+                        @method('PUT')
                         <!-- First column-->
                         <div class="col-12 col-lg-8">
                             <!-- Product Information -->
@@ -744,7 +745,7 @@
                                             placeholder="Nombre del producto"
                                             name="nombre"
                                             aria-label="Nombre del producto"
-                                            value="{{ old('nombre') }}" />
+                                            value="{{ old('nombre', $producto['nombre']) }}" />
                                     </div>
                                     <div class="mb-6">
                                         <label class="form-label" for="ecommerce-product-name">Descripción corta</label>
@@ -755,7 +756,7 @@
                                             placeholder="Descripción corta del producto"
                                             name="descripcion_corta"
                                             aria-label="Descripción corta del producto"
-                                            value="{{ old('descripcion_corta') }}"
+                                            value="{{ old('descripcion_corta', $producto['descripcion_corta']) }}"
                                             maxlength="150" />
                                     </div>
                                     <div class="mb-6">
@@ -767,12 +768,12 @@
                                             placeholder="URL de la imagen del producto"
                                             name="imagen_url"
                                             aria-label="URL de la imagen del producto"
-                                            value="{{ old('imagen_url') }}" />
+                                            value="{{ old('imagen_url', $producto['imagen_url']) }}" />
                                     </div>
                                     <!-- Description -->
                                     <div>
                                         <label class="mb-1" for="descripcion_larga">Descripción</label>
-                                        <textarea class="form-control p-0" name="descripcion_larga" style="resize:none; min-height:7rem">{{ old('descripcion_larga') }}</textarea>
+                                        <textarea class="form-control p-0" name="descripcion_larga" style="resize:none; min-height:7rem">{{ old('descripcion_larga', $producto['descripcion_larga'])}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -798,7 +799,7 @@
                                             placeholder="Precio neto del producto"
                                             name="precio_neto"
                                             aria-label="Precio neto del producto"
-                                            value="{{ old('precio_neto') }}" />
+                                            value="{{ old('precio_neto', $producto['precio_neto']) }}" />
                                     </div>
 
                                     <div class="mb-6">
@@ -810,7 +811,7 @@
                                             placeholder="Stock actual del producto"
                                             name="stock_actual"
                                             aria-label="Stock actual del producto"
-                                            value="{{ old('stock_actual') }}"/>
+                                            value="{{ old('stock_actual', $producto['stock_actual']) }}"/>
                                     </div>
 
                                     <div class="mb-6">
@@ -822,7 +823,7 @@
                                             placeholder="Stock mínimo del producto"
                                             name="stock_minimo"
                                             aria-label="Stock mínimo del producto"
-                                            value="{{ old('stock_minimo') }}"/>
+                                            value="{{ old('stock_minimo', $producto['stock_minimo']) }}"/>
                                     </div>
 
                                     <div class="mb-6">
@@ -834,7 +835,7 @@
                                             placeholder="Stock bajo del producto"
                                             name="stock_bajo"
                                             aria-label="Stock bajo del producto"
-                                            value="{{ old('stock_bajo') }}"/>
+                                            value="{{ old('stock_bajo', $producto['stock_bajo']) }}"/>
                                     </div>
 
                                     <div class="mb-6">
@@ -846,7 +847,7 @@
                                             placeholder="Stock alto del producto"
                                             name="stock_alto"
                                             aria-label="Stock alto del producto"
-                                            value="{{ old('stock_alto') }}"/>
+                                            value="{{ old('stock_alto', $producto['stock_alto']) }}"/>
                                     </div>
 
                                 </div>

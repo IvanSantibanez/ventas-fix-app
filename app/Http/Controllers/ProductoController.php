@@ -41,7 +41,7 @@ class ProductoController extends Controller
     {
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
-            'descripcion_corta' => 'required|string|max:50',
+            'descripcion_corta' => 'required|string|max:150',
             'descripcion_larga' => 'required|string|max:255',
             'imagen_url' => 'required|string',
             'precio_neto' => 'required|numeric|min:0|max:999999999',
@@ -65,8 +65,8 @@ class ProductoController extends Controller
         $data['precio_venta'] = ($data['precio_neto'] + $iva);
 
         $fechaActual = now()->format('ymd');
-        $rand = random_int(0, 999);
-        $data['sku'] = $fechaActual . $rand;
+        $randomNum = random_int(0, 999);
+        $data['sku'] = $fechaActual . $randomNum;
 
         try {
             $producto = Producto::create($data);
@@ -152,7 +152,7 @@ class ProductoController extends Controller
 
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
-            'descripcion_corta' => 'required|string|max:50',
+            'descripcion_corta' => 'required|string|max:150',
             'descripcion_larga' => 'required|string|max:255',
             'imagen_url' => 'required|string',
             'precio_neto' => 'required|numeric|min:0|max:999999999',
@@ -238,15 +238,119 @@ class ProductoController extends Controller
     public function indexWeb()
     {
 
-        $productos = Producto::all();
+        try {
+            $productos = Producto::all();
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al obtener los productos']);
+        }
+
+        if (!$productos) {
+            return back()->withErrors(['error' => 'No hay productos para mostrar']);
+        }
+
         return view('product-list', compact('productos'));
     }
 
     public function destroyWeb(string $id)
     {
-        $producto = Producto::find($id);
+        try {
+            $producto = Producto::find($id);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al buscar el producto']);
+        }
+
         if ($producto) {
-            $producto->delete();
+            try {
+                $producto->delete();
+            } catch (\Throwable $e) {
+                return back()->withErrors(['error' => 'Error al eliminar el producto']);
+            }
+        }
+
+        return redirect()->route('productos.index');
+    }
+
+    public function storeWeb(Request $request)
+    {
+
+        $data = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion_corta' => 'required|string|max:150',
+            'descripcion_larga' => 'required|string|max:255',
+            'imagen_url' => 'required|string',
+            'precio_neto' => 'required|numeric|min:0|max:999999999',
+            'stock_actual' => 'required|numeric|min:0|max:999999999',
+            'stock_minimo' => 'required|numeric|min:0|max:999999999',
+            'stock_bajo' => 'required|numeric|min:0|max:999999999',
+            'stock_alto' => 'required|numeric|min:0|max:999999999',
+        ]);
+
+        $nombre = Producto::where('nombre', $data['nombre'])->first();
+
+        if ($nombre) {
+            return back()->withErrors(['error' => 'El nombre del producto ya está registrado en el sistema.']);
+        }
+
+
+        $iva =  $data['precio_neto'] * 0.19;
+        $data['precio_venta'] = ($data['precio_neto'] + $iva);
+
+        $fechaActual = now()->format('ymd');
+        $randomNum = random_int(0, 999);
+        $data['sku'] = $fechaActual . $randomNum;
+
+        try {
+            Producto::create($data);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al crear el producto.']);
+        }
+
+        return redirect()->route('productos.index');
+    }
+
+    public function getEditView(string $id)
+    {
+
+        try {
+            $producto = Producto::find($id);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al obtener el producto.']);
+        }
+
+        return view('product-edit', compact('producto'));
+    }
+
+    public function updateWeb(Request $request, string $id)
+    {
+        $data = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'descripcion_corta' => 'required|string|max:150',
+            'descripcion_larga' => 'required|string|max:255',
+            'imagen_url' => 'required|string',
+            'precio_neto' => 'required|numeric|min:0|max:999999999',
+            'stock_actual' => 'required|numeric|min:0|max:999999999',
+            'stock_minimo' => 'required|numeric|min:0|max:999999999',
+            'stock_bajo' => 'required|numeric|min:0|max:999999999',
+            'stock_alto' => 'required|numeric|min:0|max:999999999',
+        ]);
+
+        $nombreExistente = Producto::where('nombre', $data['nombre'])->where('id', '!=', $id)->first();
+
+        if ($nombreExistente) {
+            return back()->withErrors(['error' => 'El nombre del producto ya existe en el sistema.']);
+        }
+
+        try {
+            $producto = Producto::find($id);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al buscar el producto en el sistema.']);
+        }
+
+
+        try {
+            $producto->update($data);
+        } catch (\Throwable $e) {
+            return back()->withErrors(['error' => 'Error al actualizar el producto.']);
         }
 
         return redirect()->route('productos.index');

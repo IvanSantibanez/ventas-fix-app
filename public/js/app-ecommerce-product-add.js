@@ -15,7 +15,7 @@
       modules: {
         toolbar: '.comment-toolbar'
       },
-      placeholder: 'Product Description',
+      placeholder: 'Descripción larga del producto',
       theme: 'snow'
     });
   }

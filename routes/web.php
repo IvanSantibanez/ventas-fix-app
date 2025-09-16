@@ -39,6 +39,8 @@ Route::middleware('auth.jwt')->group(function () {
 
     Route::get('/productos', [ProductoController::class, 'indexWeb'])->name('productos.index');
     Route::delete('/productos/{id}', [ProductoController::class, 'destroyWeb'])->name('productos.destroy');
-
+    Route::post('/productos', [ProductoController::class, 'storeWeb'])->name('productos.store');
+    Route::get('/productos/{id}/editar', [ProductoController::class, 'getEditView'])->name('productos.editView');
+    Route::put('/productos/{id}/editar', [ProductoController::class, 'updateWeb'])->name('productos.update');
 
 });
