@@ -21,22 +21,13 @@ class JWTAuthController extends Controller
 
         $email = $request->nombre . "." . $request->apellido . "@ventasfix.cl";
 
-        try {
-            $usuario = Usuario::create([
-                'rut' => $request->rut,
-                'nombre' => $request->nombre,
-                'apellido' => $request->apellido,
-                'email' => $email,
-                'password' => bcrypt($request->password)
-            ]);
-        } catch (\Throwable) {
-            return response()->json([
-                'success' => false,
-                'data' => null,
-                'message' => 'Error al registrarse.'
-            ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
-        }
-
+        $usuario = Usuario::create([
+            'rut' => $request->rut,
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'email' => $email,
+            'password' => bcrypt($request->password)
+        ]);
 
 
         $token = JWTAuth::fromUser($usuario);
